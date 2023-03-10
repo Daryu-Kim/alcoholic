@@ -1,0 +1,87 @@
+@import "@/styles/_variabled.css";
+@import "@/styles/font.css";
+@import "@/styles/reset.css";
+
+.wrapper {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20vh;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    grid-gap: 0.8rem;
+}
+
+.logo-img,
+.logo-title {
+    font-size: 3.6rem;
+}
+
+.logo-img {
+    color: var(--accent-color);
+}
+
+.logo-des {
+    font-size: 1.4rem;
+}
+
+.login-box {
+    margin-bottom: 10vh;
+    padding: 0 2.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 0.8rem;
+}
+
+.login-des {
+    font-size: 1.2rem;
+    color: var(--sub-color);
+    margin-top: 0.8rem;
+    word-break: keep-all;
+}
+
+.login-item-box {
+    display: flex;
+    align-items: center;
+    grid-gap: 0.4rem;
+    background-color: var(--reverse-background-color);
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 1.6rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.login-item-text {
+    font-size: 1.4rem;
+    color: var(--reverse-primary-color);
+}
+
+.login-item-logo {
+    height: 2.4rem;
+}
+
+.fa-apple {
+    color: var(--reverse-primary-color);
+}
+
+@media screen and (min-width: 1200px) {
+    .login-box {
+        margin-left: auto;
+        margin-right: auto;
+        width: 720px;
+    }
+}
