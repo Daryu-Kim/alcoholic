@@ -1,3 +1,4 @@
+import router from "@/router";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
@@ -16,6 +17,9 @@ export default {
     });
   },
   mounted() {
+    if (this.isRunningStandalone()) {
+      router.push("/");
+    }
     if (this.isMobile()) {
       console.log("Mobile");
       const mobile_os = this.chkMobileOS();
@@ -41,6 +45,9 @@ export default {
     }
   },
   methods: {
+    isRunningStandalone() {
+      return window.matchMedia("(display-mode: standalone)").matches;
+    },
     isMobile() {
       return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     },

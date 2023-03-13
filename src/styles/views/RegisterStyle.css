@@ -3,19 +3,137 @@
 @import "@/styles/reset.css";
 
 .wrapper {
+    width: 100vw;
     height: 100vh;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
 }
 
-.content {
+.slide-progress {
+    width: 100%;
+    height: 0.4rem;
+
+}
+
+.register-slide {
     width: 100%;
     height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: var(--background-color);
+    padding: 2.4rem;
 }
 
-.slide {
+.register-slide-title {
+    font-size: 2.4rem;
+    text-align: start;
+    margin-top: 4.8rem;
+}
+
+.register-slide-des {
+    margin-top: 0.4rem;
+    text-align: start;
+    color: var(--sub-color);
+    font-size: 1.4rem;
+}
+
+.display-none {
+    display: none;
+}
+
+.register-slide-item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 3.6rem;
+    grid-gap: 1.6rem;
+}
+
+.register-slide-name {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid var(--sub-color);
+    font-size: 1.8rem;
+    padding-bottom: 0.4rem;
+    background-color: transparent;
+}
+
+.register-slide-name:focus {
+    border-color: var(--accent-color);
+    font-weight: 700;
+}
+
+.register-slide-age {
+    background-color: transparent;
+    padding: 0.6rem 1.2rem;
+    border: 2px solid var(--sub-color);
+}
+
+.register-slide-age:focus {
+    font-weight: 700;
+}
+
+.register-slide-option {
+    background-color: var(--background-color);
+}
+
+.register-slide-gender {
+    padding: 0.8rem 2.4rem;
+    border: 2px solid var(--sub-color);
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font-size: 1.8rem;
+}
+
+.register-slide-gender-radio:checked + .register-slide-gender {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: black;
+    font-weight: 700;
+}
+
+.register-slide-img-box {
+    width: 12rem;
+    height: 12rem;
+    margin-top: 3.6rem;
+    display: flex;
+}
+
+.register-slide-img {
+    border-radius: 0.8rem;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    border: 3px solid var(--accent-color);
     display: flex;
     justify-content: center;
     align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.fa-plus {
+    font-size: 2.4rem;
+}
+
+.register-next-btn {
+    width: calc(100% - 4.8rem);
+    background-color: var(--accent-color);
+    cursor: pointer;
+    bottom: 2.4rem;
+    position: absolute;
+    color: black;
+    font-size: 2rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: 0.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media screen and (min-width: 1200px) {
+    .wrapper {
+        width: 768px;
+        margin: auto;
+    }
 }

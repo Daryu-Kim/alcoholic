@@ -1,4 +1,6 @@
 import router from "@/router";
+import { doc, getDoc } from "firebase/firestore";
+import { firestore } from "../modules/firebase";
 
 export default {
   name: "HomeView",
@@ -7,7 +9,7 @@ export default {
     if (this.isRunningStandalone()) {
       // Running Standalone
       this.$refs.SPIN_TEXT.innerHTML = "유저 데이터를 불러오는 중입니다!";
-      setTimeout(() => {
+      setTimeout(async () => {
         if (!localStorage.getItem("UID")) {
           this.$refs.SPIN_TEXT.innerHTML =
             "로그인 데이터가 없습니다!<br/>로그인 페이지로 이동합니다!";
@@ -15,13 +17,18 @@ export default {
             router.push("/login");
           }, 1500);
         } else {
-          if (!localStorage.getItem("CURRENT_PLACE")) {
+          const docSnap = await getDoc(
+            doc(firestore, "Users", localStorage.getItem("UID"))
+          );
+
+          if (docSnap.data().verified) {
             setTimeout(() => {
               router.push("/home");
             }, 1500);
           } else {
-            // CURRENT_PLACE
-            // localStorage.getItem("CURRENT_PLACE")[1];
+            setTimeout(() => {
+              router.push("/register");
+            }, 1500);
           }
         }
       }, 1000);

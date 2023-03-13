@@ -16,9 +16,7 @@
 }
 
 *:focus {
-  background-image: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
-  color: transparent;
-  -webkit-background-clip: text;
+  color: var(--accent-color);
 }
 
 html {
