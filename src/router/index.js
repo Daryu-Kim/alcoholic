@@ -3,11 +3,16 @@ import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import InstallView from "../views/InstallView.vue";
 import RegisterView from "../views/RegisterView.vue";
+import MainView from "../views/MainView.vue";
+import MainHomeView from "../views/MainHomeView.vue";
+import MainSearchView from "../views/MainSearchView.vue";
+import MainOrderView from "../views/MainOrderView.vue";
+import ScanView from "../views/ScanView.vue";
 
 const routes = [
   {
     path: "/",
-    name: "home",
+    name: "index",
     component: HomeView,
   },
   {
@@ -24,6 +29,44 @@ const routes = [
     path: "/register",
     name: "register",
     component: RegisterView,
+  },
+  {
+    path: "/main",
+    name: "main",
+    component: MainView,
+    redirect: "/main/home",
+    children: [
+      {
+        path: "home",
+        name: "home",
+        component: MainHomeView,
+      },
+      {
+        path: "search",
+        name: "search",
+        component: MainSearchView,
+      },
+      {
+        path: "order",
+        name: "order",
+        component: MainOrderView,
+      },
+      {
+        path: "chat",
+        name: "chat",
+        component: MainOrderView,
+      },
+      {
+        path: "profile",
+        name: "profile",
+        component: MainOrderView,
+      },
+    ],
+  },
+  {
+    path: "/scan",
+    name: "scan",
+    component: ScanView,
   },
 ];
 

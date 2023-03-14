@@ -27,6 +27,7 @@ export default {
 
       if (docSnap.exists()) {
         if (docSnap.data().verified) {
+          localStorage.setItem("MENU", 0);
           router.push("/main");
         } else {
           router.push("/register");

@@ -20,36 +20,27 @@ export default {
     if (this.isRunningStandalone()) {
       router.push("/");
     }
-    if (this.isMobile()) {
-      console.log("Mobile");
-      const mobile_os = this.chkMobileOS();
-      if (mobile_os === 0) {
-        console.log("Android");
-        this.device_info = "Android";
-      } else if (mobile_os === 1) {
-        console.log("iOS");
-        this.device_info = "iOS";
-      } else {
-        console.log("Not Compatable!");
-        toast.error("지원되지 않는 기기입니다!", {
-          autoClose: 2000,
-          theme: "colored",
-        });
-        setTimeout(() => {
-          window.close();
-        }, 2000);
-      }
+    const mobile_os = this.chkMobileOS();
+    if (mobile_os === 0) {
+      console.log("Android");
+      this.device_info = "Android";
+    } else if (mobile_os === 1) {
+      console.log("iOS");
+      this.device_info = "iOS";
     } else {
-      console.log("Desktop");
-      this.device_info = "Desktop";
+      console.log("Not Compatable!");
+      toast.error("지원하지 않는 기기입니다!", {
+        autoClose: 2000,
+        theme: "colored",
+      });
+      setTimeout(() => {
+        window.close();
+      }, 2000);
     }
   },
   methods: {
     isRunningStandalone() {
       return window.matchMedia("(display-mode: standalone)").matches;
-    },
-    isMobile() {
-      return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     },
     chkMobileOS() {
       var user_agent = navigator.userAgent.toLowerCase();

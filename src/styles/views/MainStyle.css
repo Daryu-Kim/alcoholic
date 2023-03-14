@@ -1,0 +1,64 @@
+@import "@/styles/_variabled.css";
+@import "@/styles/font.css";
+@import "@/styles/reset.css";
+
+.wrapper {
+    height: 100vh;
+    position: relative;
+}
+
+.main-timeout-label {
+    position: fixed;
+    left: calc(100% - 3.2rem);
+    top: 6.4rem;
+    padding: 0.4rem 0.8rem 0.4rem 0.4rem;
+    border-radius: 100rem 0 0 100rem;
+    background-color: var(--dialog-background-color);
+    display: flex;
+    align-items: center;
+    grid-gap: 0.4rem;
+}
+
+.main-timeout-label:hover > img {
+    animation: rotate 2.5s ease-in-out;
+}
+
+.main-timeout-label:hover {
+    animation: time 2.5s 500ms ease-in-out;
+}
+
+.main-timeout-text {
+    width: 6.1rem;
+    text-align: center;
+    line-height: 100%;
+    padding-bottom: 0.3rem;
+    font-size: 1.4rem;
+}
+
+.main-timeout-icon {
+    width: 2.8rem;
+    height: 2.8rem;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0turn);
+    }
+    100% {
+        transform: rotate(-6turn);
+    }
+}
+
+@keyframes time {
+    25%{
+        transform: translateX(-7.3rem);
+
+    }
+    75%{
+        transform: translateX(-7.3rem);
+
+    }
+    100%{
+        transform: translateX(0rem);
+    }
+}

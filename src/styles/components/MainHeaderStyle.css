@@ -1,0 +1,35 @@
+@import "@/styles/_variabled.css";
+@import "@/styles/font.css";
+@import "@/styles/reset.css";
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 2.4rem;
+    box-shadow: 0 0.2rem 0.6rem var(--shadow-color);
+    height: 4.4rem;
+}
+
+.header-logo {
+    display: flex;
+    grid-gap: 0.6rem;
+    align-items: center;
+}
+
+.header-logo-title {
+    font-size: 2rem;
+}
+
+i {
+    font-size: 2.4rem;
+}
+
+.fa-qrcode:hover {
+    color: var(--accent-color);
+}
+
+.fa-wine-bottle {
+    color: var(--accent-color);
+}
