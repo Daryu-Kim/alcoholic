@@ -5,7 +5,12 @@
       <p class="header-logo-title bold">Alcoholic</p>
     </div>
     <div class="header-btn-box">
-      <i class="fa-solid fa-qrcode pointer" @click="scanQRCode"></i>
+      <i
+        v-if="isLinked"
+        class="fa-solid fa-link-slash pointer"
+        @click="unLink"
+      ></i>
+      <i v-else class="fa-solid fa-qrcode pointer" @click="scanQRCode"></i>
     </div>
   </div>
 </template>

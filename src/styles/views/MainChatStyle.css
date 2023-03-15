@@ -1,0 +1,128 @@
+@import "@/styles/_variabled.css";
+@import "@/styles/font.css";
+@import "@/styles/reset.css";
+
+.wrapper {
+    overflow: hidden;
+}
+
+.chat-viewer-box {
+    background-color: var(--background-color);
+    background-color: var(--dialog-background-color);
+    width: 100%;
+    height: calc(100% - 5.6rem);
+    overflow: scroll;
+    scroll-behavior: smooth;
+}
+
+.chat-viewer-item {
+    padding: 1.2rem 2.4rem;
+    display: flex;
+    
+}
+
+.chat-viewer-item-profile-img {
+    width: 4.2rem;
+    height: 4.2rem;
+    aspect-ratio: 1 / 1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 50%;
+}
+
+.chat-viewer-item-content-box {
+    max-width: 65%;
+    margin-left: 1.2rem;
+}
+
+.chat-viewer-item-name {
+    text-align: start;
+    font-size: 1.4rem;
+}
+
+.chat-viewer-item-table {
+    text-align: start;
+    font-size: 1.2rem;
+    color: var(--sub-color);
+}
+
+.chat-viewer-item-msg-box {
+    margin-top: 0.6rem;
+    background-color: var(--background-color);
+    border-radius: 0.8rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.8rem 1.6rem;
+}
+
+.chat-viewer-item-msg-img {
+    max-width: 100%;
+    max-height: 48rem;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    margin-top: 0.6rem;
+}
+
+.chat-viewer-item-msg {
+    text-align: start;
+    font-size: 1.6rem;
+}
+
+.chat-viewer-item-timestamp {
+    width: fit-content;
+    align-self: self-end;
+    font-size: 1.2rem;
+    color: var(--sub-color);
+    margin-left: 0.8rem;
+}
+
+.chat-writer-box {
+    background-color: var(--dialog-background-color);
+    background-color: var(--background-color);
+    width: 100%;
+    height: 5.6rem;
+    padding: 0.8rem 1.6rem;
+}
+
+.chat-writer-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border-radius: 100rem;
+    border: 1px solid var(--sub-color);
+    padding: 0.6rem 1.6rem;
+    align-items: center;
+    grid-gap: 1.2rem;
+}
+
+.chat-writer-accent-box {
+    background-color: var(--accent-color);
+    height: 100%;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+}
+
+.chat-writer-text-input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+.chat-writer-text-input:focus {
+    outline: none;
+}
+
+.chat-writer-func-box {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 1.2rem;
+}
+
+.chat-writer-func-item {
+    height: 100%;
+    cursor: pointer;
+}

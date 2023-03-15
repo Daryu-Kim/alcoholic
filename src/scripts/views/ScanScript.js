@@ -76,14 +76,21 @@ export default {
       // localStorage에 제한시간이 안되면
       // Cookie에 제한시간 넣기.
       var temp = result.split(";");
-      await setRefreshCookie(temp[0], temp[1]);
-      toast.loading("QR 인식이 완료되었습니다!\n홈으로 이동합니다!", {
-        theme: this.is_dark,
-      });
-      setTimeout(() => {
-        toast.clearAll();
-        router.replace("/main/order");
-      }, 2000);
+      if (temp[2] == "Alcoholic") {
+        await setRefreshCookie(temp[0], temp[1]);
+        toast.loading("QR 인식이 완료되었습니다!\n홈으로 이동합니다!", {
+          theme: this.is_dark,
+        });
+        setTimeout(() => {
+          toast.clearAll();
+          router.replace("/main");
+        }, 2000);
+      } else {
+        toast.error("유효한 QR코드가 아닙니다!\n다시 인식시켜주세요!", {
+          autoClose: 2000,
+          theme: "colored",
+        });
+      }
     },
   },
 };

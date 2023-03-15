@@ -77,6 +77,6 @@
   </div>
 </template>
 
-<style src="@/styles/views/RegisterStyle.css" />
+<style scoped src="@/styles/views/RegisterStyle.css" />
 
 <script src="@/scripts/views/RegisterScript.js" />

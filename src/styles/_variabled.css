@@ -31,6 +31,8 @@
 
     --toastify-text-color-light: #757575;
     --toastify-text-color-dark: #fff;
+
+    --pastel-red: #ff6961;
 }
 
 @media (prefers-color-scheme: dark) {

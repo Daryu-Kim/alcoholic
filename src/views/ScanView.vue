@@ -20,6 +20,6 @@
   </div>
 </template>
 
-<style src="@/styles/views/ScanStyle.css" />
+<style scoped src="@/styles/views/ScanStyle.css" />
 
 <script src="@/scripts/views/ScanScript.js" />

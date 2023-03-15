@@ -7,6 +7,7 @@ import MainView from "../views/MainView.vue";
 import MainHomeView from "../views/MainHomeView.vue";
 import MainSearchView from "../views/MainSearchView.vue";
 import MainOrderView from "../views/MainOrderView.vue";
+import MainChatView from "../views/MainChatView.vue";
 import ScanView from "../views/ScanView.vue";
 
 const routes = [
@@ -54,7 +55,7 @@ const routes = [
       {
         path: "chat",
         name: "chat",
-        component: MainOrderView,
+        component: MainChatView,
       },
       {
         path: "profile",

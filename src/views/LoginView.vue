@@ -23,6 +23,6 @@
   </div>
 </template>
 
-<style src="@/styles/views/LoginStyle.css" />
+<style scoped src="@/styles/views/LoginStyle.css" />
 
 <script src="@/scripts/views/LoginScript.js" />

@@ -29,3 +29,7 @@ export const getRefreshCookie = () => {
   }
   return cResult;
 };
+
+export function deleteCookie(name) {
+  document.cookie = `${name}=; path=/; expires=0;`;
+}

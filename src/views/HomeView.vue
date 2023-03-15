@@ -7,6 +7,6 @@
   </div>
 </template>
 
-<style src="@/styles/views/HomeStyle.css" />
+<style scoped src="@/styles/views/HomeStyle.css" />
 
 <script src="@/scripts/views/HomeScript.js" />

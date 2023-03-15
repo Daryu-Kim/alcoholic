@@ -50,9 +50,9 @@ export default {
         this.$refs.SPIN_TEXT.innerHTML = "지원하지 않는 기기입니다!";
         setTimeout(() => {
           window.close();
-        }, 2000);
+        }, 1000);
       }
-    }, 1500);
+    }, 1000);
   },
   methods: {
     isRunningStandalone() {

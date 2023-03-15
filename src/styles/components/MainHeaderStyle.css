@@ -3,6 +3,9 @@
 @import "@/styles/reset.css";
 
 .header {
+    position: fixed;
+    top: 0;
+    background-color: var(--background-color);
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -10,6 +13,7 @@
     padding: 0.8rem 2.4rem;
     box-shadow: 0 0.2rem 0.6rem var(--shadow-color);
     height: 4.4rem;
+    z-index: 1;
 }
 
 .header-logo {
@@ -22,14 +26,17 @@
     font-size: 2rem;
 }
 
-i {
-    font-size: 2.4rem;
+.fa-link-slash {
+    color: var(--pastel-red);
+    font-size: 2rem;
 }
 
-.fa-qrcode:hover {
+.fa-qrcode {
     color: var(--accent-color);
+    font-size: 2.4rem;
 }
 
 .fa-wine-bottle {
     color: var(--accent-color);
+    font-size: 2.4rem;
 }

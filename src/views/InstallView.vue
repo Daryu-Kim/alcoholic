@@ -19,6 +19,6 @@
   </div>
 </template>
 
-<style src="@/styles/views/InstallStyle.css" />
+<style scoped src="@/styles/views/InstallStyle.css" />
 
 <script src="@/scripts/views/InstallScript.js" />
