@@ -1,4 +1,3 @@
-import router from "@/router";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 
@@ -17,9 +16,6 @@ export default {
     });
   },
   mounted() {
-    if (this.isRunningStandalone()) {
-      router.push("/");
-    }
     const mobile_os = this.chkMobileOS();
     if (mobile_os === 0) {
       console.log("Android");

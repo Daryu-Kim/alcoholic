@@ -27,17 +27,16 @@ export default {
 
       if (docSnap.exists()) {
         if (docSnap.data().verified) {
-          localStorage.setItem("MENU", 0);
-          router.push("/main");
+          router.replace("/main");
         } else {
-          router.push("/register");
+          router.replace("/register");
         }
       } else {
         await setDoc(doc(firestore, "Users", UID), {
           uid: UID,
           verified: false,
         });
-        router.push("/register");
+        router.replace("/register");
       }
 
       localStorage.setItem("UID", UID);

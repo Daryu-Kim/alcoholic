@@ -1,7 +1,7 @@
 import router from "@/router";
 import { QrcodeStream } from "vue3-qrcode-reader";
 import { toast } from "vue3-toastify";
-import { getRefreshCookie, setRefreshCookie } from "../modules/Cookie";
+import { setSessionStorage } from "../modules/Storage";
 
 export default {
   name: "ScanView",
@@ -18,7 +18,6 @@ export default {
     };
   },
   mounted() {
-    console.log(getRefreshCookie());
     this.isDarkMode() ? (this.is_dark = "dark") : (this.is_dark = "light");
   },
   methods: {
@@ -68,16 +67,10 @@ export default {
       }
     },
     async onDecode(result) {
-      // QR Code 받아와서 정보 확인하고
-      // 유효하지 않은 정보면 error 띄우고 modal 닫기
-      // 유효한 정보면 간단한 정보 확인 후
-      // 버튼 눌러서 localStorage에 장소랑 테이블 번호랑
-      // 1시간 동안만 유효하게 설정하기.
-      // localStorage에 제한시간이 안되면
-      // Cookie에 제한시간 넣기.
       var temp = result.split(";");
       if (temp[2] == "Alcoholic") {
-        await setRefreshCookie(temp[0], temp[1]);
+        setSessionStorage("PLACE_ID", temp[0]);
+        setSessionStorage("TABLE_ID", temp[1]);
         toast.loading("QR 인식이 완료되었습니다!\n홈으로 이동합니다!", {
           theme: this.is_dark,
         });

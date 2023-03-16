@@ -18,7 +18,7 @@ export default {
                 this.$refs.SPIN_TEXT.innerHTML =
                   "로그인 데이터가 없습니다!<br/>로그인 페이지로 이동합니다!";
                 setTimeout(() => {
-                  router.push("/login");
+                  router.replace("/login");
                 }, 1500);
               } else {
                 const docSnap = await getDoc(
@@ -27,12 +27,11 @@ export default {
 
                 if (docSnap.data().verified) {
                   setTimeout(() => {
-                    localStorage.setItem("MENU", 0);
-                    router.push("/main");
+                    router.replace("/main");
                   }, 1500);
                 } else {
                   setTimeout(() => {
-                    router.push("/register");
+                    router.replace("/register");
                   }, 1500);
                 }
               }
@@ -42,7 +41,7 @@ export default {
             this.$refs.SPIN_TEXT.innerHTML =
               "미설치 상태입니다!<br/>설치 페이지로 이동합니다!";
             setTimeout(() => {
-              router.push("/install");
+              router.replace("/install");
             }, 1500);
           }
         }, 1000);

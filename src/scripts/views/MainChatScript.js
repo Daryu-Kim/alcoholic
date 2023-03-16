@@ -9,15 +9,15 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { toast } from "vue3-toastify";
-import { getRefreshCookie } from "../modules/Cookie";
 import { firestore } from "../modules/firebase";
+import { getSessionStorage } from "../modules/Storage";
 
 export default {
   name: "MainChatView",
   data() {
     return {
-      PLACE_ID: "",
-      TABLE_ID: "",
+      PLACE_ID: getSessionStorage("PLACE_ID"),
+      TABLE_ID: getSessionStorage("TABLE_ID"),
       UID: "",
       USER_NAME: "",
       USER_AGE: 0,
@@ -27,12 +27,7 @@ export default {
     };
   },
   async mounted() {
-    const cookie = getRefreshCookie();
-    this.PLACE_ID = cookie[0];
-    this.TABLE_ID = cookie[1];
     this.UID = localStorage.getItem("UID");
-
-    console.log(this.PLACE_ID, this.TABLE_ID);
     const docSnap = await getDoc(doc(firestore, "Users", this.UID));
     if (docSnap.exists()) {
       this.USER_NAME = docSnap.data().name;
@@ -58,14 +53,13 @@ export default {
         orderBy("created_at")
       );
       const snapshot = onSnapshot(messageCol, (snapshot) => {
-        snapshot.docChanges().forEach((change) => {
+        snapshot.docChanges().forEach(async (change) => {
           if (change.type === "added") {
-            this.messages.push(change.doc.data());
+            await this.messages.push(change.doc.data());
           }
         });
-        console.log(this.messages);
       });
-      console.log(snapshot);
+      console.info(snapshot);
     },
     isDarkMode() {
       return (
@@ -89,7 +83,7 @@ export default {
           {
             created_at: Timestamp.fromDate(new Date()),
             display_name: `${this.USER_NAME} | ${age} | ${this.USER_GENDER}`,
-            display_table: `Table. ${getRefreshCookie()[1]}.`,
+            display_table: `Table. ${this.TABLE_ID}.`,
             uid: this.UID,
             msg: value,
             msg_img_url: "",

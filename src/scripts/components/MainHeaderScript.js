@@ -1,11 +1,11 @@
 import router from "@/router";
-import { deleteCookie, getRefreshCookie } from "../modules/Cookie";
+import { clearSessionStorage, getSessionStorage } from "../modules/Storage";
 
 export default {
   name: "MainHeaderComponent",
   data() {
     return {
-      isLinked: getRefreshCookie()[0] != "",
+      isLinked: getSessionStorage("PLACE_ID"),
     };
   },
   methods: {
@@ -14,17 +14,16 @@ export default {
       if (router.currentRoute.value.name == "home") {
         router.go(0);
       } else {
-        router.push("/main");
+        router.replace("/main");
       }
     },
     async unLink() {
-      deleteCookie("TABLE_ID");
-      deleteCookie("TABLE_NUM");
+      clearSessionStorage();
       await router.replace("/main");
       router.go(0);
     },
     scanQRCode() {
-      router.push("/scan");
+      router.replace("/scan");
     },
   },
 };

@@ -1,6 +1,13 @@
 <template>
   <div class="footer">
-    <input class="footer-radio" type="radio" name="footer" id="home" checked />
+    <input
+      class="footer-radio"
+      type="radio"
+      name="footer"
+      id="home"
+      ref="FOOTER_HOME"
+      checked
+    />
     <label
       for="home"
       class="fa-solid fa-house pointer footer-item"

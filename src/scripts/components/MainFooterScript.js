@@ -1,8 +1,8 @@
 import router from "@/router";
 import { doc, getDoc } from "firebase/firestore";
 import { toast } from "vue3-toastify";
-import { getRefreshCookie } from "../modules/Cookie";
 import { firestore } from "../modules/firebase";
+import { getSessionStorage } from "../modules/Storage";
 
 export default {
   name: "MainFooterComponent",
@@ -12,6 +12,9 @@ export default {
     };
   },
   async mounted() {
+    console.log(getSessionStorage("PLACE_ID"));
+    this.$refs.FOOTER_HOME.checked = true;
+
     const user_id = localStorage.getItem("UID");
     const account_img = document.querySelector(".footer-item-account");
     const docSnap = await getDoc(doc(firestore, "Users", user_id));
@@ -30,35 +33,35 @@ export default {
       );
     },
     homeClick() {
-      router.push("/main/home");
+      router.replace("/main/home");
     },
     searchClick() {
-      router.push("/main/search");
+      router.replace("/main/search");
     },
     orderClick() {
-      if (!getRefreshCookie()[0] != "") {
+      if (!getSessionStorage("PLACE_ID")) {
         toast.loading("QR 인식창으로 이동합니다.", {
           theme: this.is_dark,
         });
         setTimeout(() => {
           toast.clearAll();
-          router.push("/scan");
+          router.replace("/scan");
         }, 2000);
       } else {
-        router.push("/main/order");
+        router.replace("/main/order");
       }
     },
     chatClick() {
-      if (!getRefreshCookie()[0] != "") {
+      if (!getSessionStorage("PLACE_ID")) {
         toast.loading("QR 인식창으로 이동합니다.", {
           theme: this.is_dark,
         });
         setTimeout(() => {
           toast.clearAll();
-          router.push("/scan");
+          router.replace("/scan");
         }, 2000);
       } else {
-        router.push("/main/chat");
+        router.replace("/main/chat");
       }
     },
   },

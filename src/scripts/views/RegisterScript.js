@@ -135,7 +135,7 @@ export default {
               verified: true,
             });
             toast.clearAll();
-            router.push("/main");
+            router.replace("/main");
           }
           break;
 
