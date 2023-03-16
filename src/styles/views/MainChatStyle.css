@@ -92,7 +92,9 @@
     font-weight: 500;
 }
 
-.overlay-profile-follow-btn {
+.overlay-profile-modify-btn,
+.overlay-profile-follow-btn,
+.overlay-profile-unfollow-btn {
     background-color: var(--reverse-background-color);
     width: 90%;
     margin: 0 auto;
@@ -105,12 +107,24 @@
     padding: 0.8rem;
 }
 
+.overlay-profile-modify-btn > i {
+    color: var(--reverse-primary-color);
+    font-size: 1.8rem;
+}
+
 .overlay-profile-follow-btn > i {
     color: var(--accent-color);
     font-size: 1.8rem;
 }
 
-.overlay-profile-follow-btn > p {
+.overlay-profile-unfollow-btn > i {
+    color: var(--pastel-red);
+    font-size: 1.8rem;
+}
+
+.overlay-profile-modify-btn > p,
+.overlay-profile-follow-btn > p,
+.overlay-profile-unfollow-btn > p {
     color: var(--reverse-primary-color);
 }
 

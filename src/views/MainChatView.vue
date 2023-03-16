@@ -27,9 +27,29 @@
             <p class="overlay-profile-following-des">팔로잉</p>
           </div>
         </div>
-        <div class="overlay-profile-follow-btn pointer">
+        <div
+          v-if="CLICKED_UID == UID"
+          class="overlay-profile-modify-btn pointer"
+          @click="overlayProfileModify"
+        >
+          <i class="fa-solid fa-pencil"></i>
+          <p class="bold">프로필 관리</p>
+        </div>
+        <div
+          v-else-if="!isFollowed"
+          class="overlay-profile-follow-btn pointer"
+          @click="overlayProfileFollow"
+        >
           <i class="fa-solid fa-plus"></i>
           <p class="bold">팔로우</p>
+        </div>
+        <div
+          v-else
+          class="overlay-profile-unfollow-btn pointer"
+          @click="overlayProfileUnfollow"
+        >
+          <i class="fa-solid fa-minus"></i>
+          <p class="bold">팔로우 취소</p>
         </div>
       </div>
     </div>

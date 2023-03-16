@@ -1,3 +1,4 @@
+import router from "@/router";
 import {
   addDoc,
   collection,
@@ -12,7 +13,12 @@ import {
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { toast } from "vue3-toastify";
-import { firestore, storage } from "../modules/firebase";
+import {
+  firestore,
+  followUser,
+  storage,
+  unfollowUser,
+} from "../modules/firebase";
 import { getSessionStorage } from "../modules/Storage";
 
 export default {
@@ -35,6 +41,7 @@ export default {
       CLICKED_DES: "",
       CLICKED_FOLLOWER: 0,
       CLICKED_FOLLOWING: 0,
+      isFollowed: false,
     };
   },
   async mounted() {
@@ -112,7 +119,17 @@ export default {
       this.$refs.OVERLAY_PROFILE_BOX.style.display = "none";
       this.$refs.OVERLAY_PROFILE.style.display = "none";
     },
-    overlayProfileFollow() {},
+    overlayProfileModify() {
+      router.replace("/main/profile");
+    },
+    async overlayProfileFollow() {
+      await followUser(this.CLICKED_UID);
+      this.isFollowed = true;
+    },
+    async overlayProfileUnfollow() {
+      await unfollowUser(this.CLICKED_UID);
+      this.isFollowed = false;
+    },
     msgImgClick(event) {
       this.overlayImgView(event.target.src);
     },

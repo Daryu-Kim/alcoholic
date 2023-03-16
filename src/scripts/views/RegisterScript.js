@@ -135,6 +135,7 @@ export default {
               verified: true,
               following_count: 0,
               follower_count: 0,
+              des: "",
             });
             toast.clearAll();
             router.replace("/main");
