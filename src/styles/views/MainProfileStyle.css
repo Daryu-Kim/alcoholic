@@ -1,0 +1,7 @@
+@import "@/styles/_variabled.css";
+@import "@/styles/font.css";
+@import "@/styles/reset.css";
+
+.wrapper {
+    overflow: hidden;
+}

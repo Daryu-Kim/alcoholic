@@ -22,7 +22,7 @@
     <input class="footer-radio" type="radio" name="footer" id="order" />
     <label
       for="order"
-      class="fa-solid fa-receipt pointer footer-item"
+      class="fa-solid fa-gamepad pointer footer-item"
       @click="orderClick"
     ></label>
     <input class="footer-radio" type="radio" name="footer" id="chat" />

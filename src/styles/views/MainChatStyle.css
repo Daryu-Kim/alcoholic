@@ -4,6 +4,122 @@
 
 .wrapper {
     overflow: hidden;
+    position: relative;
+}
+
+.overlay {
+    position: fixed;
+    background-color: var(--overlay-color);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+
+.overlay-profile {
+    border-radius: 0.8rem 0.8rem 0 0;
+    background-color: var(--sub-background-color);
+    width: 100%;
+    margin-bottom: 4.8rem;
+    align-self: flex-end;
+    position: relative;
+    padding: 4.8rem 2.4rem 1.6rem 2.4rem;
+}
+
+.overlay-profile-report {
+    position: absolute;
+    top: 1.6rem;
+    left: 2.4rem;
+    width: 2.8rem;
+    height: 2.8rem;
+}
+
+.overlay-profile-img {
+    width: 9.6rem;
+    height: 9.6rem;
+    border-radius: 50%;
+    position: absolute;
+    top: -4.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.overlay-profile-name {
+    font-size: 2rem;
+    margin-top: 1.6rem;
+}
+
+.overlay-profile-info {
+    font-size: 1.6rem;
+    color: var(--sub-color);
+}
+
+.overlay-profile-des {
+    margin-top: 1.6rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.overlay-profile-follow-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 8.4rem;
+}
+
+.overlay-profile-follower-box,
+.overlay-profile-following-box {
+    margin-top: 1.6rem;
+    display: flex;
+    align-items: center;
+    grid-gap: 0.4rem;
+}
+
+.overlay-profile-follower-count,
+.overlay-profile-following-count {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.overlay-profile-follower-des,
+.overlay-profile-following-des {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.overlay-profile-follow-btn {
+    background-color: var(--reverse-background-color);
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 0.4rem;
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+}
+
+.overlay-profile-follow-btn > i {
+    color: var(--accent-color);
+    font-size: 1.8rem;
+}
+
+.overlay-profile-follow-btn > p {
+    color: var(--reverse-primary-color);
+}
+
+.overlay-img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 0.8rem;
+    padding: 10%;
+    align-self: center;
 }
 
 .chat-viewer-box {
@@ -15,10 +131,17 @@
     scroll-behavior: smooth;
 }
 
+.chat-viewer-welcome {
+    margin: 1.2rem auto 1.2rem auto;
+    background-color: var(--background-color);
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+    width: 90%;
+}
+
 .chat-viewer-item {
     padding: 1.2rem 2.4rem;
     display: flex;
-    
 }
 
 .chat-viewer-item-profile-img {

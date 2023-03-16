@@ -133,6 +133,8 @@ export default {
               age: this.temp_age,
               gender: this.temp_gender,
               verified: true,
+              following_count: 0,
+              follower_count: 0,
             });
             toast.clearAll();
             router.replace("/main");

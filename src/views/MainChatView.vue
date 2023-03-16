@@ -1,6 +1,47 @@
 <template>
   <div class="wrapper">
+    <div class="overlay" ref="OVERLAY_PROFILE_BOX" @click="overlayProfileClick">
+      <div class="overlay-profile" ref="OVERLAY_PROFILE" @click="l">
+        <div class="overlay-profile-img" ref="OVERLAY_PROFILE_IMG"></div>
+        <img src="@/assets/report.svg" class="overlay-profile-report pointer" />
+        <p class="overlay-profile-name bold">{{ CLICKED_NAME }}</p>
+        <p class="overlay-profile-info">
+          {{ CLICKED_AGE }} | {{ CLICKED_GENDER }}
+        </p>
+        <p v-if="CLICKED_DES" class="overlay-profile-des">{{ CLICKED_DES }}</p>
+        <p v-else class="overlay-profile-des">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique,
+          incidunt.
+        </p>
+        <div class="overlay-profile-follow-box">
+          <div class="overlay-profile-follower-box">
+            <p class="overlay-profile-follower-count bold">
+              {{ CLICKED_FOLLOWER }}
+            </p>
+            <p class="overlay-profile-follower-des">팔로우</p>
+          </div>
+          <div class="overlay-profile-following-box">
+            <p class="overlay-profile-following-count bold">
+              {{ CLICKED_FOLLOWING }}
+            </p>
+            <p class="overlay-profile-following-des">팔로잉</p>
+          </div>
+        </div>
+        <div class="overlay-profile-follow-btn pointer">
+          <i class="fa-solid fa-plus"></i>
+          <p class="bold">팔로우</p>
+        </div>
+      </div>
+    </div>
+    <div ref="OVERLAY_IMG_BOX" class="overlay" @click="overlayImgClick($event)">
+      <img class="overlay-img" ref="OVERLAY_IMG" />
+    </div>
     <div class="chat-viewer-box" ref="VIEWER">
+      <div class="chat-viewer-welcome">
+        <p class="chat-viewer-welcome-msg bold">
+          {{ USER_NAME }} 님이 입장하셨습니다!
+        </p>
+      </div>
       <div
         class="chat-viewer-item you"
         v-for="(item, index) in messages"
@@ -10,7 +51,8 @@
           :style="{
             backgroundImage: `url(${item.profile_img_url})`,
           }"
-          class="chat-viewer-item-profile-img"
+          class="chat-viewer-item-profile-img pointer"
+          @click="profileImgClick($event)"
         ></div>
         <div class="chat-viewer-item-content-box">
           <p class="chat-viewer-item-name bold">
@@ -24,6 +66,7 @@
             :src="item.msg_img_url"
             alt=""
             class="chat-viewer-item-msg-img"
+            @click="msgImgClick($event)"
           />
           <div v-if="item.msg != ''" class="chat-viewer-item-msg-box">
             <p class="chat-viewer-item-msg">
@@ -42,7 +85,14 @@
     </div>
     <div class="chat-writer-box">
       <div class="chat-writer-form">
-        <input type="file" accept="image/*" id="image" class="display-none" />
+        <input
+          type="file"
+          accept="image/*"
+          id="image"
+          class="display-none"
+          ref="INPUT_IMG"
+          @change="sendImage"
+        />
         <label for="image" class="chat-writer-func-item">
           <img
             src="@/assets/image_light.svg"
