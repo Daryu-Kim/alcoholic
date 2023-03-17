@@ -45,7 +45,7 @@ export default {
         });
         setTimeout(() => {
           toast.clearAll();
-          router.replace("/scan");
+          router.push("/scan");
         }, 2000);
       } else {
         router.replace("/main/order");
@@ -58,11 +58,14 @@ export default {
         });
         setTimeout(() => {
           toast.clearAll();
-          router.replace("/scan");
+          router.push("/scan");
         }, 2000);
       } else {
         router.replace("/main/chat");
       }
+    },
+    profileClick() {
+      router.replace("/main/profile");
     },
   },
 };

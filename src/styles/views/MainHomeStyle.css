@@ -1,0 +1,66 @@
+@import "@/styles/_variabled.css";
+@import "@/styles/font.css";
+@import "@/styles/reset.css";
+
+.wrapper {
+    overflow: hidden;
+    padding: 3.6rem 2.4rem;
+    position: relative;
+}
+
+.home-title {
+    color: var(--accent-color);
+}
+
+.home-title,
+.home-title-des,
+.home-recommend-title {
+    font-size: 2.4rem;
+    text-align: start;
+}
+
+.home-title-sla {
+    font-size: 2rem;
+}
+
+.home-function-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--reverse-background-color);
+    position: fixed;
+    bottom: 7.2rem;
+    right: 2.4rem;
+    padding: 1.2rem 0.8rem;
+    border-radius: 100rem;
+    grid-gap: 1.2rem;
+}
+
+.home-function-box > i {
+    font-size: 1.6rem;
+    border-radius: 50%;
+    padding: 0.8rem;
+    color: #101010;
+}
+
+.fa-link {
+    background-color: var(--accent-color);
+}
+
+.fa-link-slash {
+    background-color: var(--pastel-red);
+}
+
+.home-recommend-box {
+    margin-top: 4.8rem;
+}
+
+.home-recommend-swiper {
+    margin-top: 0.8rem;
+}
+
+.home-recommend-slide {
+    border-radius: 0.8rem;
+    background-color: var(--primary-color);
+}

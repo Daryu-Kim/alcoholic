@@ -4,14 +4,7 @@
       <i class="fa-solid fa-wine-bottle"></i>
       <p class="header-logo-title bold">Alcoholic</p>
     </div>
-    <div class="header-btn-box">
-      <i
-        v-if="isLinked"
-        class="fa-solid fa-link-slash pointer"
-        @click="unLink"
-      ></i>
-      <i v-else class="fa-solid fa-qrcode pointer" @click="scanQRCode"></i>
-    </div>
+    <i class="fa-solid fa-bell pointer" @click="goAlert"></i>
   </div>
 </template>
 

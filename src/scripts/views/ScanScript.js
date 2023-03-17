@@ -76,7 +76,7 @@ export default {
         });
         setTimeout(() => {
           toast.clearAll();
-          router.replace("/main");
+          router.go(-1);
         }, 2000);
       } else {
         toast.error("유효한 QR코드가 아닙니다!\n다시 인식시켜주세요!", {

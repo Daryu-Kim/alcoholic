@@ -26,17 +26,8 @@
     font-size: 2rem;
 }
 
-.fa-link-slash {
-    color: var(--pastel-red);
-    font-size: 2rem;
-}
-
-.fa-qrcode {
-    color: var(--accent-color);
-    font-size: 2.4rem;
-}
-
-.fa-wine-bottle {
+.fa-wine-bottle,
+.fa-bell {
     color: var(--accent-color);
     font-size: 2.4rem;
 }

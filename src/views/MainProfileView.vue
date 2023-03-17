@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
-    <p>PROFILE</p>
+    <p @click="logout">logout</p>
   </div>
 </template>
 
-<style scoped src="@/styles/views/LoginStyle.css" />
+<style scoped src="@/styles/views/MainProfileStyle.css" />
 
-<script src="@/scripts/views/MainHomeScript.js" />
+<script src="@/scripts/views/MainProfileScript.js" />

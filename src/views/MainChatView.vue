@@ -27,29 +27,27 @@
             <p class="overlay-profile-following-des">팔로잉</p>
           </div>
         </div>
-        <div
-          v-if="CLICKED_UID == UID"
-          class="overlay-profile-modify-btn pointer"
-          @click="overlayProfileModify"
-        >
-          <i class="fa-solid fa-pencil"></i>
-          <p class="bold">프로필 관리</p>
-        </div>
-        <div
-          v-else-if="!isFollowed"
-          class="overlay-profile-follow-btn pointer"
-          @click="overlayProfileFollow"
-        >
-          <i class="fa-solid fa-plus"></i>
-          <p class="bold">팔로우</p>
-        </div>
-        <div
-          v-else
-          class="overlay-profile-unfollow-btn pointer"
-          @click="overlayProfileUnfollow"
-        >
-          <i class="fa-solid fa-minus"></i>
-          <p class="bold">팔로우 취소</p>
+        <div class="overlay-profile-func-box">
+          <div class="overlay-profile-go-btn pointer" @click="overlayProfileGo">
+            <i class="fa-solid fa-user"></i>
+            <p class="bold">프로필</p>
+          </div>
+          <div
+            v-if="!isFollowed"
+            class="overlay-profile-follow-btn pointer"
+            @click="overlayProfileFollow"
+          >
+            <i class="fa-solid fa-plus"></i>
+            <p class="bold">팔로우</p>
+          </div>
+          <div
+            v-else
+            class="overlay-profile-unfollow-btn pointer"
+            @click="overlayProfileUnfollow"
+          >
+            <i class="fa-solid fa-minus"></i>
+            <p class="bold">팔로우 취소</p>
+          </div>
         </div>
       </div>
     </div>
@@ -72,22 +70,26 @@
             @click="profileImgClick($event)"
           ></div>
           <div class="chat-viewer-item-content-box">
-            <p class="chat-viewer-item-name bold">
-              {{ item.display_name }}
-            </p>
-            <p class="chat-viewer-item-table">
-              {{ item.display_table }}
-            </p>
-            <img
-              :src="item.msg_img_url"
-              alt=""
-              class="chat-viewer-item-msg-img"
-              @click="msgImgClick($event)"
-            />
-            <div class="chat-viewer-item-msg-box" v-if="item.msg">
-              <p class="chat-viewer-item-msg">
-                {{ item.msg }}
+            <div>
+              <p class="chat-viewer-item-name bold">
+                {{ item.display_name }}
               </p>
+              <p class="chat-viewer-item-table">
+                {{ item.display_table }}
+              </p>
+            </div>
+            <div class="chat-viewer-item-content-div">
+              <img
+                :src="item.msg_img_url"
+                alt=""
+                class="chat-viewer-item-msg-img"
+                @click="msgImgClick($event)"
+              />
+              <div class="chat-viewer-item-msg-box" v-if="item.msg">
+                <p class="chat-viewer-item-msg">
+                  {{ item.msg }}
+                </p>
+              </div>
             </div>
           </div>
           <p class="chat-viewer-item-timestamp">
@@ -106,7 +108,7 @@
               String(item.created_at.toDate().getMinutes()).padStart(2, "0")
             }}
           </p>
-          <div class="chat-viewer-item-content-box">
+          <div class="chat-viewer-item-content-box me">
             <img
               :src="item.msg_img_url"
               alt=""

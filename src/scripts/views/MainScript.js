@@ -7,4 +7,22 @@ export default {
     MainHeaderComponent,
     MainFooterComponent,
   },
+  data() {
+    return {
+      canLeaveSite: false,
+    };
+  },
+  mounted() {
+    window.addEventListener("beforeunload", this.unLoadEvent);
+  },
+  beforeUnmount() {
+    window.removeEventListener("beforeunload", this.unLoadEvent);
+  },
+  methods: {
+    unLoadEvent(event) {
+      if (this.canLeaveSite) return;
+      event.preventDefault();
+      event.returnValue = "";
+    },
+  },
 };

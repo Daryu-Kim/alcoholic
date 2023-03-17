@@ -69,7 +69,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-gap: 8.4rem;
+    grid-gap: 15vw;
 }
 
 .overlay-profile-follower-box,
@@ -92,13 +92,20 @@
     font-weight: 500;
 }
 
-.overlay-profile-modify-btn,
+.overlay-profile-func-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.6rem;
+    width: 90%;
+    margin: auto;
+    margin-top: 1.6rem;
+}
+
+.overlay-profile-go-btn,
 .overlay-profile-follow-btn,
 .overlay-profile-unfollow-btn {
     background-color: var(--reverse-background-color);
-    width: 90%;
-    margin: 0 auto;
-    margin-top: 1.6rem;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -107,7 +114,7 @@
     padding: 0.8rem;
 }
 
-.overlay-profile-modify-btn > i {
+.overlay-profile-go-btn > i {
     color: var(--reverse-primary-color);
     font-size: 1.8rem;
 }
@@ -122,7 +129,7 @@
     font-size: 1.8rem;
 }
 
-.overlay-profile-modify-btn > p,
+.overlay-profile-go-btn > p,
 .overlay-profile-follow-btn > p,
 .overlay-profile-unfollow-btn > p {
     color: var(--reverse-primary-color);
@@ -153,7 +160,7 @@
 }
 
 .chat-viewer {
-    padding: 1.2rem 2.4rem;
+    padding: 0.8rem 2.4rem;
 }
 
 .chat-viewer-item {
@@ -174,9 +181,20 @@
     border-radius: 50%;
 }
 
+.chat-viewer-item-content-div {
+    display: flex;
+}
+
 .chat-viewer-item-content-box {
     max-width: 65%;
     margin-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 0.6rem;
+}
+
+.chat-viewer-item-content-box.me {
+    grid-gap: 0;
 }
 
 .chat-viewer-item-name {
@@ -191,7 +209,6 @@
 }
 
 .chat-viewer-item-msg-box {
-    margin-top: 0.6rem;
     background-color: var(--background-color);
     border-radius: 0.8rem;
     width: fit-content;
@@ -208,7 +225,6 @@
     max-height: 48rem;
     cursor: pointer;
     border-radius: 0.8rem;
-    margin-top: 0.6rem;
 }
 
 .chat-viewer-item-msg {

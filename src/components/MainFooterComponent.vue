@@ -35,7 +35,7 @@
     <label
       for="account"
       class="pointer footer-item-account"
-      @click="accountClick"
+      @click="profileClick"
     ></label>
   </div>
 </template>
