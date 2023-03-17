@@ -62,45 +62,64 @@
           {{ USER_NAME }} 님이 입장하셨습니다!
         </p>
       </div>
-      <div
-        class="chat-viewer-item you"
-        v-for="(item, index) in messages"
-        :key="index"
-      >
-        <div
-          :style="{
-            backgroundImage: `url(${item.profile_img_url})`,
-          }"
-          class="chat-viewer-item-profile-img pointer"
-          @click="profileImgClick($event)"
-        ></div>
-        <div class="chat-viewer-item-content-box">
-          <p class="chat-viewer-item-name bold">
-            {{ item.display_name }}
-          </p>
-          <p class="chat-viewer-item-table">
-            {{ item.display_table }}
-          </p>
-          <img
-            v-if="item.msg_img_url != ''"
-            :src="item.msg_img_url"
-            alt=""
-            class="chat-viewer-item-msg-img"
-            @click="msgImgClick($event)"
-          />
-          <div v-if="item.msg != ''" class="chat-viewer-item-msg-box">
-            <p class="chat-viewer-item-msg">
-              {{ item.msg }}
+      <div v-for="(item, index) in messages" :key="index" class="chat-viewer">
+        <div class="chat-viewer-item" v-if="UID != item.uid">
+          <div
+            :style="{
+              backgroundImage: `url(${item.profile_img_url})`,
+            }"
+            class="chat-viewer-item-profile-img pointer"
+            @click="profileImgClick($event)"
+          ></div>
+          <div class="chat-viewer-item-content-box">
+            <p class="chat-viewer-item-name bold">
+              {{ item.display_name }}
             </p>
+            <p class="chat-viewer-item-table">
+              {{ item.display_table }}
+            </p>
+            <img
+              :src="item.msg_img_url"
+              alt=""
+              class="chat-viewer-item-msg-img"
+              @click="msgImgClick($event)"
+            />
+            <div class="chat-viewer-item-msg-box" v-if="item.msg">
+              <p class="chat-viewer-item-msg">
+                {{ item.msg }}
+              </p>
+            </div>
+          </div>
+          <p class="chat-viewer-item-timestamp">
+            {{
+              String(item.created_at.toDate().getHours()).padStart(2, "0") +
+              " : " +
+              String(item.created_at.toDate().getMinutes()).padStart(2, "0")
+            }}
+          </p>
+        </div>
+        <div class="chat-viewer-item me-item" v-else>
+          <p class="chat-viewer-item-timestamp">
+            {{
+              String(item.created_at.toDate().getHours()).padStart(2, "0") +
+              " : " +
+              String(item.created_at.toDate().getMinutes()).padStart(2, "0")
+            }}
+          </p>
+          <div class="chat-viewer-item-content-box">
+            <img
+              :src="item.msg_img_url"
+              alt=""
+              class="chat-viewer-item-msg-img"
+              @click="msgImgClick($event)"
+            />
+            <div class="chat-viewer-item-msg-box me-msgbox" v-if="item.msg">
+              <p class="chat-viewer-item-msg me-msg">
+                {{ item.msg }}
+              </p>
+            </div>
           </div>
         </div>
-        <p class="chat-viewer-item-timestamp">
-          {{
-            String(item.created_at.toDate().getHours()).padStart(2, "0") +
-            " : " +
-            String(item.created_at.toDate().getMinutes()).padStart(2, "0")
-          }}
-        </p>
       </div>
     </div>
     <div class="chat-writer-box">

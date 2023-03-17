@@ -137,7 +137,6 @@
 }
 
 .chat-viewer-box {
-    background-color: var(--background-color);
     background-color: var(--dialog-background-color);
     width: 100%;
     height: calc(100% - 5.6rem);
@@ -153,9 +152,16 @@
     width: 90%;
 }
 
-.chat-viewer-item {
+.chat-viewer {
     padding: 1.2rem 2.4rem;
+}
+
+.chat-viewer-item {
     display: flex;
+}
+
+.me-item {
+    justify-content: flex-end;
 }
 
 .chat-viewer-item-profile-img {
@@ -193,6 +199,10 @@
     padding: 0.8rem 1.6rem;
 }
 
+.me-msgbox {
+    background-color: var(--accent-color);
+}
+
 .chat-viewer-item-msg-img {
     max-width: 100%;
     max-height: 48rem;
@@ -204,6 +214,10 @@
 .chat-viewer-item-msg {
     text-align: start;
     font-size: 1.6rem;
+}
+
+.me-msg {
+    color: #101010;
 }
 
 .chat-viewer-item-timestamp {
