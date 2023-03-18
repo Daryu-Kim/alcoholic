@@ -6,7 +6,7 @@ import RegisterView from "../views/RegisterView.vue";
 import MainView from "../views/MainView.vue";
 import MainHomeView from "../views/MainHomeView.vue";
 import MainSearchView from "../views/MainSearchView.vue";
-import MainOrderView from "../views/MainOrderView.vue";
+import MainRecommendView from "../views/MainRecommendView.vue";
 import MainChatView from "../views/MainChatView.vue";
 import MainProfileView from "../views/MainProfileView.vue";
 import ScanView from "../views/ScanView.vue";
@@ -49,9 +49,9 @@ const routes = [
         component: MainSearchView,
       },
       {
-        path: "order",
-        name: "order",
-        component: MainOrderView,
+        path: "recommend",
+        name: "recommend",
+        component: MainRecommendView,
       },
       {
         path: "chat",

@@ -3,7 +3,6 @@
 @import "@/styles/reset.css";
 
 .wrapper {
-    overflow: hidden;
     padding: 3.6rem 2.4rem;
     position: relative;
 }
@@ -41,26 +40,88 @@
     font-size: 1.6rem;
     border-radius: 50%;
     padding: 0.8rem;
-    color: #101010;
 }
 
 .fa-link {
     background-color: var(--accent-color);
+    color: #101010;
 }
 
 .fa-link-slash {
     background-color: var(--pastel-red);
+    color: #101010;
+}
+
+.fa-plus {
+    background-color: var(--background-color);
+    color: var(--primary-color);
 }
 
 .home-recommend-box {
-    margin-top: 4.8rem;
+    margin-top: 3.6rem;
 }
 
-.home-recommend-swiper {
+.home-recommend-list {
     margin-top: 0.8rem;
+    display: grid;
+    grid-gap: 1.6rem;
 }
 
-.home-recommend-slide {
+.home-recommend-item {
     border-radius: 0.8rem;
+    padding: 0.8rem;
     background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    grid-gap: 0.8rem;
+}
+
+.home-recommend-item-profile-box {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    grid-gap: 0.8rem;
+}
+
+.home-recommend-item-profile-img {
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
+    background-image: url("https://picsum.photos/480/480");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.home-recommend-item-profile-name {
+    color: var(--reverse-primary-color);
+    font-size: 1.8rem;
+}
+
+.home-recommend-item-img {
+    border-radius: 0.8rem;
+    background-color: var(--background-color);
+    aspect-ratio: 1 / 1;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-image: url("https://picsum.photos/960/640/");
+}
+
+.home-recommend-item-text {
+    color: var(--reverse-primary-color);
+    text-align: start;
+}
+
+.home-recommend-item-timestamp {
+    color: var(--sub-color);
+    text-align: start;
+    font-size: 1.4rem;
+}
+
+@media screen and (min-width: 768px) {
+    .home-recommend-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

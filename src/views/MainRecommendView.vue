@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
-    <p>ORDER</p>
+    <p>RECOMMEND</p>
   </div>
 </template>
 
 <style scoped src="@/styles/views/LoginStyle.css" />
 
-<script src="@/scripts/views/MainOrderScript.js" />
+<script src="@/scripts/views/MainRecommendScript.js" />

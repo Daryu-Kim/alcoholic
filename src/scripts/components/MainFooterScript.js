@@ -38,18 +38,8 @@ export default {
     searchClick() {
       router.replace("/main/search");
     },
-    orderClick() {
-      if (!getSessionStorage("PLACE_ID")) {
-        toast.loading("QR 인식창으로 이동합니다.", {
-          theme: this.is_dark,
-        });
-        setTimeout(() => {
-          toast.clearAll();
-          router.push("/scan");
-        }, 2000);
-      } else {
-        router.replace("/main/order");
-      }
+    recommendClick() {
+      router.replace("/main/recommend");
     },
     chatClick() {
       if (!getSessionStorage("PLACE_ID")) {

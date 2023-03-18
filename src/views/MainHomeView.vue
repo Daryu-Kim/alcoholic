@@ -11,30 +11,28 @@
       <p class="home-title-des" v-else>어디 계세요..?</p>
     </div>
     <div class="home-recommend-box">
-      <p class="home-recommend-title bold">이런 활동은 어때요?</p>
-      <swiper
-        class="home-recommend-swiper"
-        v-if="PID"
-        :slides-per-view="1"
-        :space-between="16"
-        :centeredSlides="true"
-      >
-        <swiper-slide
+      <p class="home-recommend-title bold">다른 사람들의</p>
+      <p class="home-recommend-title bold">소식도 접해보세요!</p>
+      <div class="home-recommend-list">
+        <div
+          class="home-recommend-item"
           v-for="(item, index) in RECOMMEND_ITEM"
           :key="index"
-          class="home-recommend-slide"
-          :style="{
-            backgroundColor: item[2],
-          }"
         >
-          <p :style="{ color: item[3] }">{{ item[0] }}</p>
-          <p>{{ item[1] }}</p>
-        </swiper-slide>
-      </swiper>
+          <div class="home-recommend-item-profile-box">
+            <div class="home-recommend-item-profile-img"></div>
+            <p class="home-recommend-item-profile-name bold">jio</p>
+          </div>
+          <div class="home-recommend-item-img"></div>
+          <p class="home-recommend-item-text">{{ item[0] }}</p>
+          <p class="home-recommend-item-timestamp">10분 전</p>
+        </div>
+      </div>
     </div>
     <div class="home-function-box">
       <i class="fa-solid fa-link" v-if="!PID" @click="toLink"></i>
       <i class="fa-solid fa-link-slash" v-else @click="toUnlink"></i>
+      <i class="fa-solid fa-plus" @click="toAddTimeline"></i>
     </div>
   </div>
 </template>
