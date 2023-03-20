@@ -2,6 +2,7 @@ import MainHeaderComponent from "@/components/MainHeaderComponent.vue";
 import MainFooterComponent from "@/components/MainFooterComponent.vue";
 import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "../modules/firebase";
+import { toast } from "vue3-toastify";
 
 export default {
   name: "MainSearchView",
@@ -16,7 +17,7 @@ export default {
       locateSrc:
         "https://raw.githubusercontent.com/Daryu-Kim/alcoholic/7ee087326ab4f9a562e9b1c1f47577a624507256/src/assets/locate_marker.svg",
       currentSrc:
-        "https://raw.githubusercontent.com/Daryu-Kim/alcoholic/7ee087326ab4f9a562e9b1c1f47577a624507256/src/assets/current_marker.svg",
+        "https://raw.githubusercontent.com/Daryu-Kim/alcoholic/ebcc2c8859fe668d10fb092070ef589fa4265830/src/assets/current_marker.svg",
       markerSize: null,
       locateImage: null,
       currentImage: null,
@@ -102,6 +103,24 @@ export default {
 
         this.map.setCenter(getGPS);
       });
+    },
+    searchClick() {
+      var value = this.$refs.SEARCH_INPUT.value;
+      if (!value) {
+        toast.error("검색어를 입력해주세요!", {
+          autoClose: 2000,
+          theme: "colored",
+        });
+      } else {
+        if (value[0] == "@") {
+          console.log("술 종류 검색");
+          // const filter = query(collection(firestore))
+        } else if (value[0] == "#") {
+          console.log("태그 검색");
+        } else {
+          console.log("술집 이름 검색");
+        }
+      }
     },
   },
 };
