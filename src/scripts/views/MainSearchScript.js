@@ -39,7 +39,6 @@ export default {
   },
   methods: {
     async loadMap() {
-      // const container = document.getElementById("map");
       const container = this.$refs.MAP;
       this.markerSize = new kakao.maps.Size(48, 48);
       this.locateImage = new kakao.maps.MarkerImage(
