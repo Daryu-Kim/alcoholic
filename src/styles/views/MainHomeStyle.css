@@ -62,14 +62,14 @@
 }
 
 .home-recommend-list {
-    margin-top: 0.8rem;
+    margin-top: 1.6rem;
     display: grid;
     grid-gap: 1.6rem;
 }
 
 .home-recommend-item {
     border-radius: 0.8rem;
-    padding: 0.8rem;
+    padding: 1.2rem;
     background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
@@ -77,10 +77,22 @@
 }
 
 .home-recommend-item-profile-box {
-    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.4rem;
+}
+
+.home-recommend-item-profile-left {
     display: flex;
     align-items: center;
     grid-gap: 0.8rem;
+}
+
+.home-recommend-item-profile-right {
+    display: flex;
+    align-items: center;
+    grid-gap: 0.4rem;
 }
 
 .home-recommend-item-profile-img {
@@ -99,6 +111,11 @@
     font-size: 1.8rem;
 }
 
+.home-recommend-item-profile-right > * {
+    color: var(--sub-color);
+    font-size: 1.4rem;
+}
+
 .home-recommend-item-img {
     border-radius: 0.8rem;
     background-color: var(--background-color);
@@ -112,12 +129,8 @@
 .home-recommend-item-text {
     color: var(--reverse-primary-color);
     text-align: start;
-}
-
-.home-recommend-item-timestamp {
-    color: var(--sub-color);
-    text-align: start;
-    font-size: 1.4rem;
+    padding: 0 0.4rem;
+    font-size: 1.6rem;
 }
 
 @media screen and (min-width: 768px) {

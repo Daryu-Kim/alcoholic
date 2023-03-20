@@ -20,12 +20,22 @@
           :key="index"
         >
           <div class="home-recommend-item-profile-box">
-            <div class="home-recommend-item-profile-img"></div>
-            <p class="home-recommend-item-profile-name bold">jio</p>
+            <div class="home-recommend-item-profile-left">
+              <div class="home-recommend-item-profile-img"></div>
+              <p class="home-recommend-item-profile-name bold">jio</p>
+            </div>
+            <div class="home-recommend-item-profile-right">
+              <i class="fa-solid fa-clock"></i>
+              <p class="home-recommend-item-timestamp">10분 전</p>
+            </div>
           </div>
           <div class="home-recommend-item-img"></div>
-          <p class="home-recommend-item-text">{{ item[0] }}</p>
-          <p class="home-recommend-item-timestamp">10분 전</p>
+          <p class="home-recommend-item-text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi
+            incidunt similique dolorem tenetur dicta dolore non quo, cupiditate
+            rerum ratione itaque consequatur cumque maxime sequi corporis a,
+            voluptatibus, reiciendis neque.
+          </p>
         </div>
       </div>
     </div>
