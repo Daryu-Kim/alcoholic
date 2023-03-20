@@ -13,8 +13,10 @@ export default {
     return {
       map: null,
       marker: [],
-      locateSrc: "../../assets/locate_marker.svg",
-      currentSrc: "../../assets/locate_marker.svg",
+      locateSrc:
+        "https://raw.githubusercontent.com/Daryu-Kim/alcoholic/7ee087326ab4f9a562e9b1c1f47577a624507256/src/assets/locate_marker.svg",
+      currentSrc:
+        "https://raw.githubusercontent.com/Daryu-Kim/alcoholic/7ee087326ab4f9a562e9b1c1f47577a624507256/src/assets/current_marker.svg",
       markerSize: null,
       locateImage: null,
       currentImage: null,
@@ -38,7 +40,7 @@ export default {
     async loadMap() {
       // const container = document.getElementById("map");
       const container = this.$refs.MAP;
-      this.markerSize = new kakao.maps.Size(24, 24);
+      this.markerSize = new kakao.maps.Size(48, 48);
       this.locateImage = new kakao.maps.MarkerImage(
         this.locateSrc,
         this.markerSize
