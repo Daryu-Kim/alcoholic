@@ -74,7 +74,7 @@ export const followUser = async (targetUID) => {
           ),
           {
             display_name: targetDoc.data().name,
-            display_info: `${currentYear - targetDoc.data().age} | ${
+            display_info: `${currentYear - targetDoc.data().age + 1} | ${
               targetDoc.data().gender
             }`,
             display_des: targetDoc.data().des,
@@ -93,7 +93,7 @@ export const followUser = async (targetUID) => {
           ),
           {
             display_name: myDoc.data().name,
-            display_info: `${currentYear - myDoc.data().age} | ${
+            display_info: `${currentYear - myDoc.data().age + 1} | ${
               myDoc.data().gender
             }`,
             display_des: myDoc.data().des,

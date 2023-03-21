@@ -31,12 +31,21 @@
             <p class="profile-following-des">팔로잉</p>
           </div>
         </div>
-        <p v-if="!isFollowed" class="profile-follow bold" @click="clickFollow">
-          팔로우
-        </p>
-        <p v-else class="profile-unfollow bold" @click="clickUnfollow">
-          팔로우 취소
-        </p>
+        <div class="profile-btn-box">
+          <p v-if="isF4F" class="profile-dm bold" @click="clickMessage">
+            메시지
+          </p>
+          <p
+            v-if="!isFollowed"
+            class="profile-follow bold"
+            @click="clickFollow"
+          >
+            팔로우
+          </p>
+          <p v-else class="profile-unfollow bold" @click="clickUnfollow">
+            팔로우 취소
+          </p>
+        </div>
       </div>
     </div>
   </div>

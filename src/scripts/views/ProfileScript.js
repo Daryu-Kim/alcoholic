@@ -19,13 +19,17 @@ export default {
       USER_FOLLOWER: 0,
       USER_FOLLOWING: 0,
       isFollowed: false,
+      isF4F: false,
     };
   },
   async mounted() {
+    const currentYear = new Date().getFullYear();
     const isFollow = await getDoc(
       doc(firestore, "Follows", this.UID, "Following", this.ID)
     );
-    const currentYear = new Date().getFullYear();
+    const isFollowing = await getDoc(
+      doc(firestore, "Follows", this.ID, "Follower", this.UID)
+    );
     const docSnap = await getDoc(doc(firestore, "Users", this.ID));
     if (docSnap.exists()) {
       const data = docSnap.data();
@@ -37,6 +41,7 @@ export default {
       this.USER_INFO = `${currentYear - data.age + 1} | ${data.gender}`;
     }
     if (isFollow.exists()) this.isFollowed = true;
+    if (isFollow.exists() && isFollowing.exists()) this.isF4F = true;
   },
   methods: {
     goFollower() {
