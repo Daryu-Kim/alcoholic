@@ -11,7 +11,7 @@ export default {
       }
     },
     goAlert() {
-      router.push("/alert");
+      // router.push("/alert");
     },
   },
 };

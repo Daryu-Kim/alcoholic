@@ -24,15 +24,14 @@ import { toast } from "vue3-toastify";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAHexSJ9D9cygfzv2kxtDM6MhNU34DN19I",
-  authDomain: "alcohol-3e4ad.firebaseapp.com",
-  databaseURL:
-    "https://alcohol-3e4ad-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "alcohol-3e4ad",
-  storageBucket: "alcohol-3e4ad.appspot.com",
-  messagingSenderId: "582300501346",
-  appId: "1:582300501346:web:79724f3a1266d25d5c583b",
-  measurementId: "G-QES7FSH0CH",
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+  databaseURL: process.env.VUE_APP_DATABASE_URL,
+  projectId: process.env.VUE_APP_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_APP_ID,
+  measurementId: process.env.VUE_APP_MEASUREMENT_ID,
 };
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();

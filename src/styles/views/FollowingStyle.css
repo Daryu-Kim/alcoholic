@@ -3,5 +3,46 @@
 @import "@/styles/reset.css";
 
 .wrapper {
+    margin-top: 4.4rem;
     position: relative;
+}
+
+.following-item {
+    padding: 1.2rem 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.following-item-left {
+    display: flex;
+    align-items: center;
+    grid-gap: 1.2rem;
+}
+
+.following-item-img {
+    width: 5.2rem;
+    height: 5.2rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.following-item-title {
+    font-size: 1.8rem;
+    text-align: start;
+}
+
+.following-item-des {
+    font-size: 1.4rem;
+    text-align: start;
+    color: var(--sub-color);
+}
+
+.following-item-unfollow-btn {
+    background-color: var(--reverse-background-color);
+    color: var(--reverse-primary-color);
+    border-radius: 100rem;
+    padding: 0.2rem 1.6rem;
 }
