@@ -1,6 +1,6 @@
 import MainHeaderComponent from "@/components/MainHeaderComponent.vue";
 import MainFooterComponent from "@/components/MainFooterComponent.vue";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../modules/firebase";
 import { toast } from "vue3-toastify";
 
@@ -21,6 +21,7 @@ export default {
       markerSize: null,
       locateImage: null,
       currentImage: null,
+      full_markers: [],
     };
   },
   mounted() {
@@ -39,6 +40,7 @@ export default {
   },
   methods: {
     async loadMap() {
+      // 함수 내 변수 설정.
       const container = this.$refs.MAP;
       this.markerSize = new kakao.maps.Size(48, 48);
       this.locateImage = new kakao.maps.MarkerImage(
@@ -49,44 +51,39 @@ export default {
         this.currentSrc,
         this.markerSize
       );
+      var marker;
       const querySnapshot = await getDocs(collection(firestore, "Places"));
 
+      // GPS 정보 받아와서 marker 표시.
       navigator.geolocation.getCurrentPosition((position) => {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
         const pos = new kakao.maps.LatLng(lat, lng);
         const options = {
           center: pos,
-          level: 3,
+          level: 1,
         };
 
         this.map = new kakao.maps.Map(container, options);
-        var marker = new kakao.maps.Marker({
+        marker = new kakao.maps.Marker({
           map: this.map,
           position: pos,
           image: this.currentImage,
         });
         marker.setMap(this.map);
       });
-      querySnapshot.forEach((doc) => {
-        this.marker.push({
-          position: new kakao.maps.LatLng(
-            doc.data().latitude,
-            doc.data().longitude
-          ),
-          title: doc.data().name,
-        });
-      });
 
-      for (var i = 0; i < this.marker.length; i++) {
-        var marker = new kakao.maps.Marker({
+      // Places 데이터 불러와서 Marker로 표시.
+      querySnapshot.forEach((doc) => {
+        var pos = new kakao.maps.LatLng(doc.data().pos[0], doc.data().pos[1]);
+        marker = new kakao.maps.Marker({
           map: this.map,
-          position: this.marker[i].position,
-          title: this.marker[i].title,
-          // image: markerImage,
+          position: pos,
+          image: this.locateImage,
         });
         marker.setMap(this.map);
-      }
+        this.full_markers.push(marker);
+      });
     },
     zoomInClick() {
       this.map.setLevel(this.map.getLevel() - 1);
@@ -103,7 +100,7 @@ export default {
         this.map.setCenter(getGPS);
       });
     },
-    searchClick() {
+    async searchClick() {
       var value = this.$refs.SEARCH_INPUT.value;
       if (!value) {
         toast.error("검색어를 입력해주세요!", {
@@ -113,13 +110,55 @@ export default {
       } else {
         if (value[0] == "@") {
           console.log("술 종류 검색");
-          // const filter = query(collection(firestore))
+          this.removeMarker();
+          const temp = value.split("@");
+          const filter = query(
+            collection(firestore, "Places"),
+            where("alcohols", "array-contains", temp[1])
+          );
+          this.addMarker(filter);
         } else if (value[0] == "#") {
           console.log("태그 검색");
+          this.removeMarker();
+          const temp = value.split("#");
+          const filter = query(
+            collection(firestore, "Places"),
+            where("tags", "array-contains", temp[1])
+          );
+          this.addMarker(filter);
         } else {
-          console.log("술집 이름 검색");
+          this.removeMarker();
+          const filter = query(
+            collection(firestore, "Places"),
+            where("keywords", "array-contains", value)
+          );
+          this.addMarker(filter);
         }
       }
+    },
+    async addMarker(filter) {
+      var marker;
+      var bounds = new kakao.maps.LatLngBounds();
+      const querySnapshot = await getDocs(filter);
+      querySnapshot.forEach((doc) => {
+        console.log(doc.data());
+        const pos = new kakao.maps.LatLng(doc.data().pos[0], doc.data().pos[1]);
+        marker = new kakao.maps.Marker({
+          map: this.map,
+          position: pos,
+          image: this.locateImage,
+        });
+        marker.setMap(this.map);
+        this.full_markers.push(marker);
+        bounds.extend(pos);
+        this.map.setBounds(bounds);
+      });
+    },
+    removeMarker() {
+      for (var i = 0; i < this.full_markers.length; i++) {
+        this.full_markers[i].setMap(null);
+      }
+      this.full_markers = [];
     },
   },
 };

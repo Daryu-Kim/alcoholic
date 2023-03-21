@@ -1,0 +1,21 @@
+@import "@/styles/_variabled.css";
+@import "@/styles/font.css";
+@import "@/styles/reset.css";
+
+.header {
+    position: fixed;
+    top: 0;
+    background-color: var(--background-color);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 2.4rem;
+    box-shadow: 0 0.2rem 0.6rem var(--shadow-color);
+    height: 4.4rem;
+    z-index: 1;
+    grid-gap: 1.6rem;
+}
+
+.header-title {
+    font-size: 2rem;
+}

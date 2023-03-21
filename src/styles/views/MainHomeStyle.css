@@ -52,89 +52,65 @@
     color: #101010;
 }
 
-.fa-plus {
-    background-color: var(--background-color);
-    color: var(--primary-color);
-}
-
 .home-recommend-box {
     margin-top: 3.6rem;
 }
 
+.home-recommend-title-box {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.home-recommend-des {
+    color: var(--sub-color);
+    font-size: 1.4rem;
+}
+
 .home-recommend-list {
     margin-top: 1.6rem;
-    display: grid;
-    grid-gap: 1.6rem;
 }
 
 .home-recommend-item {
     border-radius: 0.8rem;
     padding: 1.2rem;
-    background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
     grid-gap: 0.8rem;
+    height: 20rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
 }
 
-.home-recommend-item-profile-box {
+.home-recommend-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 0.4rem;
+    padding: 0.8rem 1.6rem;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 80%);
 }
 
-.home-recommend-item-profile-left {
+.home-recommend-name {
+    font-size: 2.4rem;
+    text-align: start;
+}
+
+.home-recommend-tag-box {
     display: flex;
+    margin-top: 0.4rem;
     align-items: center;
     grid-gap: 0.8rem;
+    flex-wrap: wrap;
 }
 
-.home-recommend-item-profile-right {
-    display: flex;
-    align-items: center;
-    grid-gap: 0.4rem;
-}
-
-.home-recommend-item-profile-img {
-    width: 3.6rem;
-    height: 3.6rem;
-    border-radius: 50%;
-    border: 2px solid var(--accent-color);
-    background-image: url("https://picsum.photos/480/480");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-}
-
-.home-recommend-item-profile-name {
-    color: var(--reverse-primary-color);
-    font-size: 1.8rem;
-}
-
-.home-recommend-item-profile-right > * {
-    color: var(--sub-color);
+.home-recommend-tag {
     font-size: 1.4rem;
-}
-
-.home-recommend-item-img {
-    border-radius: 0.8rem;
-    background-color: var(--background-color);
-    aspect-ratio: 1 / 1;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    background-image: url("https://picsum.photos/960/640/");
-}
-
-.home-recommend-item-text {
-    color: var(--reverse-primary-color);
-    text-align: start;
-    padding: 0 0.4rem;
-    font-size: 1.6rem;
-}
-
-@media screen and (min-width: 768px) {
-    .home-recommend-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    color: var(--accent-color);
 }

@@ -10,6 +10,9 @@ import MainRecommendView from "../views/MainRecommendView.vue";
 import MainChatView from "../views/MainChatView.vue";
 import MainProfileView from "../views/MainProfileView.vue";
 import ScanView from "../views/ScanView.vue";
+import FollowerView from "../views/FollowerView.vue";
+import FollowingView from "../views/FollowingView.vue";
+import ProfileView from "../views/ProfileView.vue";
 
 const routes = [
   {
@@ -69,6 +72,21 @@ const routes = [
     path: "/scan",
     name: "scan",
     component: ScanView,
+  },
+  {
+    path: "/follower",
+    name: "follower",
+    component: FollowerView,
+  },
+  {
+    path: "/following",
+    name: "following",
+    component: FollowingView,
+  },
+  {
+    path: "/profile",
+    name: "userprofile",
+    component: ProfileView,
   },
 ];
 

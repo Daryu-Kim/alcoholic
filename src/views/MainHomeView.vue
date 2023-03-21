@@ -11,38 +11,38 @@
       <p class="home-title-des" v-else>어디 계세요..?</p>
     </div>
     <div class="home-recommend-box">
-      <p class="home-recommend-title bold">다른 사람들의</p>
-      <p class="home-recommend-title bold">소식도 접해보세요!</p>
-      <div class="home-recommend-list">
-        <div
+      <div class="home-recommend-title-box">
+        <p class="home-recommend-title bold">이런 술집은 어떠세요?</p>
+        <p class="home-recommend-des" @click="goRecommend">더보기</p>
+      </div>
+      <swiper :navigation="true" :modules="modules" class="home-recommend-list">
+        <swiper-slide
           class="home-recommend-item"
           v-for="(item, index) in RECOMMEND_ITEM"
           :key="index"
+          :style="{
+            backgroundImage: `url(${item.img})`,
+          }"
+          @click="slideClick(item.pid)"
         >
-          <div class="home-recommend-item-profile-box">
-            <div class="home-recommend-item-profile-left">
-              <div class="home-recommend-item-profile-img"></div>
-              <p class="home-recommend-item-profile-name bold">jio</p>
-            </div>
-            <div class="home-recommend-item-profile-right">
-              <i class="fa-solid fa-clock"></i>
-              <p class="home-recommend-item-timestamp">10분 전</p>
+          <div class="home-recommend-overlay">
+            <p class="home-recommend-name bold">{{ item.name }}</p>
+            <div class="home-recommend-tag-box">
+              <p
+                v-for="(item, index) in item.tags"
+                :key="index"
+                class="home-recommend-tag"
+              >
+                #{{ item }}
+              </p>
             </div>
           </div>
-          <div class="home-recommend-item-img"></div>
-          <p class="home-recommend-item-text">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi
-            incidunt similique dolorem tenetur dicta dolore non quo, cupiditate
-            rerum ratione itaque consequatur cumque maxime sequi corporis a,
-            voluptatibus, reiciendis neque.
-          </p>
-        </div>
-      </div>
+        </swiper-slide>
+      </swiper>
     </div>
     <div class="home-function-box">
       <i class="fa-solid fa-link" v-if="!PID" @click="toLink"></i>
       <i class="fa-solid fa-link-slash" v-else @click="toUnlink"></i>
-      <i class="fa-solid fa-plus" @click="toAddTimeline"></i>
     </div>
   </div>
 </template>

@@ -1,11 +1,17 @@
 import MainHeaderComponent from "@/components/MainHeaderComponent.vue";
 import MainFooterComponent from "@/components/MainFooterComponent.vue";
-import { clearSessionStorage, getSessionStorage } from "../modules/Storage";
-import { doc, getDoc } from "firebase/firestore";
+import {
+  clearSessionStorage,
+  getSessionStorage,
+  setSessionStorage,
+} from "../modules/Storage";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { firestore } from "../modules/firebase";
 import router from "@/router";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
 
 export default {
   name: "MainHomeView",
@@ -15,17 +21,18 @@ export default {
     Swiper,
     SwiperSlide,
   },
+  setup() {
+    return {
+      modules: [Navigation],
+    };
+  },
   data() {
     return {
       UID: localStorage.getItem("UID"),
       PID: getSessionStorage("PLACE_ID"),
       USER_NAME: "",
       PNAME: "",
-      RECOMMEND_ITEM: [
-        ["asdf", "asdfasdfasdf", "#579122", "var(--reverse-primary-color)"],
-        ["asdf", "fwiehfuiweicwano", "#15afcf", "blue"],
-        ["asdf", "wunv0r29837nmkld", "#fea2d1", "var(--pastel-red)"],
-      ],
+      RECOMMEND_ITEM: [],
     };
   },
   async mounted() {
@@ -42,6 +49,11 @@ export default {
         this.PNAME = docSnap.data().name;
       }
     }
+
+    const querySnapshot = await getDocs(collection(firestore, "Places"));
+    querySnapshot.forEach((doc) => {
+      this.RECOMMEND_ITEM.push(doc.data());
+    });
   },
   methods: {
     toLink() {
@@ -51,6 +63,12 @@ export default {
       clearSessionStorage();
       await router.replace("/main/search");
       router.replace("/main/home");
+    },
+    goRecommend() {
+      router.replace("/main/recommend");
+    },
+    slideClick(pid) {
+      setSessionStorage("TEMP_PID", pid);
     },
   },
 };

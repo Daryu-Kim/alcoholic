@@ -4,6 +4,6 @@
   </div>
 </template>
 
-<style scoped src="@/styles/views/LoginStyle.css" />
+<style scoped src="@/styles/views/MainRecommendStyle.css" />
 
 <script src="@/scripts/views/MainRecommendScript.js" />
