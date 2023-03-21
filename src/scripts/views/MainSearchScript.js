@@ -22,6 +22,7 @@ export default {
       locateImage: null,
       currentImage: null,
       full_markers: [],
+      OVERLAY: "",
     };
   },
   mounted() {
@@ -143,10 +144,46 @@ export default {
       querySnapshot.forEach((doc) => {
         console.log(doc.data());
         const pos = new kakao.maps.LatLng(doc.data().pos[0], doc.data().pos[1]);
+        const content = `
+        <div
+          style="
+            padding: 0.8rem 1.6rem;
+            background-color: var(--background-color);
+          "
+        >
+          <div
+            style:"
+              width: 400px;
+              height: 200px;
+              background-image: url(${doc.data().img});
+              background-position: center;
+              background-size: cover;
+              background-repeat: no-repeat;
+            "
+          >
+            <i class="fa-solid fa-x" @click="closeOverlay"></i>
+          </div>
+          <p
+            class="bold"
+            style="
+              color: var(--primary-color);
+              font-size: 1.8rem;
+            "
+          >${doc.data().name}</p>
+        </div>
+        `;
         marker = new kakao.maps.Marker({
           map: this.map,
           position: pos,
           image: this.locateImage,
+        });
+        var overlay = new kakao.maps.CustomOverlay({
+          content: content,
+          map: this.map,
+          position: marker.getPosition(),
+        });
+        kakao.maps.event.addListener(marker, "click", function () {
+          overlay.setMap(this.map);
         });
         marker.setMap(this.map);
         this.full_markers.push(marker);
@@ -159,6 +196,9 @@ export default {
         this.full_markers[i].setMap(null);
       }
       this.full_markers = [];
+    },
+    closeOverlay() {
+      this.closeOverlay.setMap(null);
     },
   },
 };

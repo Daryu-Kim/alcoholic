@@ -115,6 +115,14 @@ export default {
         })`;
       });
     },
+    overlayProfileGo() {
+      router.push({
+        path: "/profile",
+        query: {
+          UID: this.CLICKED_UID,
+        },
+      });
+    },
     overlayProfileHide() {
       this.$refs.OVERLAY_PROFILE_BOX.style.display = "none";
       this.$refs.OVERLAY_PROFILE.style.display = "none";
@@ -136,7 +144,15 @@ export default {
     overlayImgClick() {
       this.overlayImgHide();
     },
-    overlayImgView(img) {
+    async overlayImgView(img) {
+      const myDoc = await getDoc(
+        doc(firestore, "Follows", this.UID, "Following", this.CLICKED_UID)
+      );
+      if (myDoc.exists()) {
+        this.isFollowed = true;
+      } else {
+        this.isFollowed = false;
+      }
       this.$refs.OVERLAY_IMG.src = img;
       this.$refs.OVERLAY_IMG_BOX.style.display = "flex";
       this.$refs.OVERLAY_IMG.style.display = "block";
