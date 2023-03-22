@@ -104,12 +104,33 @@
 
 .overlay-box {
     padding: 0.8rem 1.6rem;
+    padding-bottom: 1.6rem;
 }
 
 .overlay-name {
     font-size: 2.4rem;
 }
 
-.fa-x {
-    color: red;
+.overlay-address {
+    color: var(--sub-color);
+}
+
+.overlay-tag-box {
+    margin-top: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.overlay-tag {
+    color: var(--accent-color);
+    font-size: 1.4rem;
+}
+
+.overlay-func-box {
+    margin-top: 1.6rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }

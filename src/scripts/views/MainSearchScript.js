@@ -3,6 +3,8 @@ import MainFooterComponent from "@/components/MainFooterComponent.vue";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../modules/firebase";
 import { toast } from "vue3-toastify";
+import { setSessionStorage } from "../modules/Storage";
+import router from "@/router";
 
 export default {
   name: "MainSearchView",
@@ -24,6 +26,10 @@ export default {
       full_markers: [],
       OVERLAY: "",
       SELECTED_PLACE: [],
+      SELECTED_ROAD: "",
+      myLAT: 0,
+      myLNG: 0,
+      isBounds: false,
     };
   },
   mounted() {
@@ -60,6 +66,8 @@ export default {
       navigator.geolocation.getCurrentPosition((position) => {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
+        this.myLAT = lat;
+        this.myLNG = lng;
         const pos = new kakao.maps.LatLng(lat, lng);
         const options = {
           center: pos,
@@ -86,6 +94,9 @@ export default {
         marker.setMap(this.map);
         this.full_markers.push(marker);
       });
+
+      const filter = collection(firestore, "Places");
+      this.addMarker(filter);
     },
     zoomInClick() {
       this.map.setLevel(this.map.getLevel() - 1);
@@ -112,28 +123,28 @@ export default {
       } else {
         if (value[0] == "@") {
           console.log("술 종류 검색");
-          this.removeMarker();
           const temp = value.split("@");
           const filter = query(
             collection(firestore, "Places"),
             where("alcohols", "array-contains", temp[1])
           );
+          this.isBounds = true;
           this.addMarker(filter);
         } else if (value[0] == "#") {
           console.log("태그 검색");
-          this.removeMarker();
           const temp = value.split("#");
           const filter = query(
             collection(firestore, "Places"),
             where("tags", "array-contains", temp[1])
           );
+          this.isBounds = true;
           this.addMarker(filter);
         } else {
-          this.removeMarker();
           const filter = query(
             collection(firestore, "Places"),
             where("keywords", "array-contains", value)
           );
+          this.isBounds = true;
           this.addMarker(filter);
         }
       }
@@ -141,6 +152,7 @@ export default {
     async addMarker(filter) {
       var marker;
       var bounds = new kakao.maps.LatLngBounds();
+      this.removeMarker();
       const querySnapshot = await getDocs(filter);
       querySnapshot.forEach((doc) => {
         console.log(doc.data());
@@ -152,13 +164,15 @@ export default {
         });
         kakao.maps.event.addListener(marker, "click", () => {
           this.SELECTED_PLACE = doc.data();
-          console.log(this.SELECTED_PLACE);
+          this.SELECTED_ROAD = `http://map.naver.com/index.nhn?slng=${this.myLNG}&slat=${this.myLAT}&stext=내+위치&elng=${this.SELECTED_PLACE.pos[1]}&elat=${this.SELECTED_PLACE.pos[0]}&pathType=0&showMap=true&etext=${this.SELECTED_PLACE.name}&menu=route`;
           this.showOverlay();
         });
         marker.setMap(this.map);
         this.full_markers.push(marker);
         bounds.extend(pos);
-        this.map.setBounds(bounds);
+        if (this.isBounds) {
+          this.map.setBounds(bounds);
+        }
       });
     },
     removeMarker() {
@@ -172,6 +186,17 @@ export default {
     },
     hideOverlay() {
       this.$refs.OVERLAY.style.display = "none";
+    },
+    goChat() {
+      setSessionStorage("PLACE_ID", this.SELECTED_PLACE.pid);
+      router.replace("/main/chat");
+    },
+    goShare() {
+      navigator.share({
+        title: "Alcoholic 장소 공유",
+        text: `${this.SELECTED_PLACE.name} 주점으로 오시는 길 안내입니다!`,
+        url: this.SELECTED_ROAD,
+      });
     },
   },
 };

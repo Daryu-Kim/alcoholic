@@ -12,9 +12,18 @@ export default {
     };
   },
   async mounted() {
-    console.log(getSessionStorage("PLACE_ID"));
-    this.$refs.FOOTER_HOME.checked = true;
-
+    const currentRoute = router.currentRoute.value.href;
+    if (currentRoute == "/main/home") {
+      this.$refs.FOOTER_HOME.checked = true;
+    } else if (currentRoute == "/main/search") {
+      this.$refs.FOOTER_SEARCH.checked = true;
+    } else if (currentRoute == "/main/recommend") {
+      this.$refs.FOOTER_RECOMMEND.checked = true;
+    } else if (currentRoute == "/main/chat") {
+      this.$refs.FOOTER_CHAT.checked = true;
+    } else {
+      this.$refs.FOOTER_ACCOUNT.checked = true;
+    }
     const user_id = localStorage.getItem("UID");
     const account_img = document.querySelector(".footer-item-account");
     const docSnap = await getDoc(doc(firestore, "Users", user_id));
