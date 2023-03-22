@@ -13,6 +13,7 @@ import ScanView from "../views/ScanView.vue";
 import FollowerView from "../views/FollowerView.vue";
 import FollowingView from "../views/FollowingView.vue";
 import ProfileView from "../views/ProfileView.vue";
+import PlaceView from "../views/PlaceView.vue";
 
 const routes = [
   {
@@ -55,6 +56,19 @@ const routes = [
         path: "recommend",
         name: "recommend",
         component: MainRecommendView,
+        redirect: "/main/recommend/place",
+        children: [
+          {
+            path: "place",
+            name: "place",
+            component: "",
+          },
+          {
+            path: "user",
+            name: "user",
+            component: "",
+          },
+        ],
       },
       {
         path: "chat",
@@ -87,6 +101,11 @@ const routes = [
     path: "/profile",
     name: "userprofile",
     component: ProfileView,
+  },
+  {
+    path: "/place",
+    name: "place",
+    component: PlaceView,
   },
 ];
 

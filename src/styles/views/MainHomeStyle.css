@@ -34,6 +34,7 @@
     padding: 1.2rem 0.8rem;
     border-radius: 100rem;
     grid-gap: 1.2rem;
+    z-index: 20;
 }
 
 .home-function-box > i {
@@ -65,6 +66,7 @@
 .home-recommend-des {
     color: var(--sub-color);
     font-size: 1.4rem;
+    text-align: start;
 }
 
 .home-recommend-list {
@@ -97,10 +99,22 @@
     background-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 80%);
 }
 
+.home-recommend-name-box {
+    display: flex;
+    grid-gap: 0.8rem;
+    align-items: flex-end;
+}
+
 .home-recommend-name {
     font-size: 2.4rem;
     text-align: start;
     color: white;
+}
+
+.home-recommend-info {
+    font-size: 1.6rem;
+    text-align: start;
+    color: var(--accent-color);
 }
 
 .home-recommend-tag-box {

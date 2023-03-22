@@ -1,10 +1,6 @@
 import MainHeaderComponent from "@/components/MainHeaderComponent.vue";
 import MainFooterComponent from "@/components/MainFooterComponent.vue";
-import {
-  clearSessionStorage,
-  getSessionStorage,
-  setSessionStorage,
-} from "../modules/Storage";
+import { clearSessionStorage, getSessionStorage } from "../modules/Storage";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { firestore } from "../modules/firebase";
 import router from "@/router";
@@ -33,9 +29,12 @@ export default {
       USER_NAME: "",
       PNAME: "",
       RECOMMEND_ITEM: [],
+      RECOMMEND_USER: [],
+      CURRENT_YEAR: "",
     };
   },
   async mounted() {
+    this.CURRENT_YEAR = new Date().getFullYear();
     if (this.UID) {
       const docSnap = await getDoc(doc(firestore, "Users", this.UID));
       if (docSnap.exists()) {
@@ -54,6 +53,13 @@ export default {
     querySnapshot.forEach((doc) => {
       this.RECOMMEND_ITEM.push(doc.data());
     });
+
+    const userSnapshot = await getDocs(collection(firestore, "Users"));
+    userSnapshot.forEach((doc) => {
+      if (doc.data().uid != this.UID) {
+        this.RECOMMEND_USER.push(doc.data());
+      }
+    });
   },
   methods: {
     toLink() {
@@ -64,11 +70,27 @@ export default {
       await router.replace("/main/search");
       router.replace("/main/home");
     },
-    goRecommend() {
-      router.replace("/main/recommend");
+    goRecommendPlace() {
+      router.replace("/main/recommend/place");
     },
-    slideClick(pid) {
-      setSessionStorage("TEMP_PID", pid);
+    goRecommendUser() {
+      router.replace("/main/recommend/user");
+    },
+    placeSlideClick(pid) {
+      router.push({
+        path: "/place",
+        query: {
+          PID: pid,
+        },
+      });
+    },
+    userSlideClick(uid) {
+      router.push({
+        path: "/profile",
+        query: {
+          UID: uid,
+        },
+      });
     },
   },
 };
