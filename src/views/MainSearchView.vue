@@ -20,6 +20,20 @@
         ></i>
       </div>
     </div>
+    <div class="overlay" ref="OVERLAY" @click="hideOverlay">
+      <div class="overlay-layout">
+        <div
+          class="overlay-img"
+          :style="{
+            backgroundImage: `url(${SELECTED_PLACE.img})`,
+          }"
+        ></div>
+        <div class="overlay-box">
+          <p class="overlay-name bold">{{ SELECTED_PLACE.name }}</p>
+          <i class="fa-solid fa-x"></i>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

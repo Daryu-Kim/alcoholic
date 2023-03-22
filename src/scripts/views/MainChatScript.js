@@ -114,6 +114,14 @@ export default {
           doc.data().profile_img
         })`;
       });
+      const myDoc = await getDoc(
+        doc(firestore, `Follows/${this.UID}/Following`, this.CLICKED_UID)
+      );
+      if (myDoc.exists()) {
+        this.isFollowed = true;
+      } else {
+        this.isFollowed = false;
+      }
     },
     overlayProfileGo() {
       router.push({
@@ -145,14 +153,6 @@ export default {
       this.overlayImgHide();
     },
     async overlayImgView(img) {
-      const myDoc = await getDoc(
-        doc(firestore, "Follows", this.UID, "Following", this.CLICKED_UID)
-      );
-      if (myDoc.exists()) {
-        this.isFollowed = true;
-      } else {
-        this.isFollowed = false;
-      }
       this.$refs.OVERLAY_IMG.src = img;
       this.$refs.OVERLAY_IMG_BOX.style.display = "flex";
       this.$refs.OVERLAY_IMG.style.display = "block";

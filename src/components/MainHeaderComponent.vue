@@ -4,7 +4,7 @@
       <i class="fa-solid fa-wine-bottle"></i>
       <p class="header-logo-title bold">Alcoholic</p>
     </div>
-    <i class="fa-solid fa-bell pointer" @click="goAlert"></i>
+    <i class="fa-solid fa-paper-plane pointer" @click="goDMList"></i>
   </div>
 </template>
 
