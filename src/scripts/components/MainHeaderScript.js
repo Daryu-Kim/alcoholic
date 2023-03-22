@@ -10,8 +10,8 @@ export default {
         router.replace("/main");
       }
     },
-    goAlert() {
-      // router.push("/alert");
+    goPostList() {
+      router.push("/post");
     },
   },
 };

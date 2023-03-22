@@ -1,0 +1,68 @@
+@import "@/styles/_variabled.css";
+@import "@/styles/font.css";
+@import "@/styles/reset.css";
+
+.dm-list {
+    margin-top: 4.4rem;
+    position: relative;
+}
+
+.dm-item {
+    padding: 1.2rem 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dm-item-left {
+    display: flex;
+    align-items: center;
+    grid-gap: 1.2rem;
+}
+
+.dm-item-img {
+    width: 5.2rem;
+    height: 5.2rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.dm-item-title {
+    font-size: 1.8rem;
+    text-align: start;
+}
+
+.post-item-timestamp-box {
+    display: flex;
+    align-items: center;
+    grid-gap: 0.4rem;
+}
+
+.fa-clock {
+    color: var(--sub-color);
+    font-size: 1.2rem;
+}
+
+.post-item-timestamp {
+    color: var(--sub-color);
+    font-size: 1.4rem;
+}
+
+.dm-item-msg {
+    font-size: 1.4rem;
+    text-align: start;
+    color: var(--sub-color);
+}
+
+.dm-item-timestamp {
+    color: var(--sub-color);
+    font-size: 1.4rem;
+}
+
+.no-post {
+    color: var(--sub-color);
+    font-size: 2.4rem;
+    margin-top: 50vh;
+}

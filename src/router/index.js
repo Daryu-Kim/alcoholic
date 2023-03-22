@@ -14,6 +14,8 @@ import FollowerView from "../views/FollowerView.vue";
 import FollowingView from "../views/FollowingView.vue";
 import ProfileView from "../views/ProfileView.vue";
 import PlaceView from "../views/PlaceView.vue";
+import PostListView from "../views/PostListView.vue";
+// import DMChatView from "../views/DMChatView.vue";
 
 const routes = [
   {
@@ -107,6 +109,16 @@ const routes = [
     name: "place",
     component: PlaceView,
   },
+  {
+    path: "/post",
+    name: "post",
+    component: PostListView,
+  },
+  // {
+  //   path: "/dm-chat",
+  //   name: "dm-chat",
+  //   component: DMChatView,
+  // },
 ];
 
 const router = createRouter({
