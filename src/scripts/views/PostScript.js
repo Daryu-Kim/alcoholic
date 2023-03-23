@@ -1,7 +1,9 @@
 import DialogHeaderComponent from "@/components/DialogHeaderComponent.vue";
 import router from "@/router";
 import { deleteDoc, doc, getDoc } from "firebase/firestore";
+import { toast } from "vue3-toastify";
 import { firestore } from "../modules/firebase";
+import { isDarkMode } from "../modules/Functions";
 
 export default {
   name: "PostView",
@@ -50,7 +52,15 @@ export default {
       });
     },
     async deletePost() {
+      toast.loading("쪽지를 삭제중입니다", {
+        theme: isDarkMode(),
+      });
       await deleteDoc(doc(firestore, `Users/${this.UID}/Posts`, this.CID));
+      toast.clearAll();
+      toast.success("쪽지를 삭제했습니다!", {
+        autoClose: 2000,
+        theme: isDarkMode(),
+      });
       router.go(-1);
     },
   },

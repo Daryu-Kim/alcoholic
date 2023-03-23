@@ -41,7 +41,7 @@ export default {
       if (msg) {
         const name = this.MY.name;
         const resultMsg = msg.replaceAll(/(\n|\r\n)/g, "<br>");
-        toast.loading("쪽지를 보내는 중입니다.", {
+        toast.loading("쪽지를 보내는 중입니다", {
           theme: isDarkMode(),
         });
         await addDoc(collection(firestore, "Users", this.TID, "Posts"), {

@@ -68,5 +68,13 @@ export default {
       await unfollowUser(this.ID);
       router.go(0);
     },
+    clickPost() {
+      router.push({
+        path: "/post-send",
+        query: {
+          TID: this.ID,
+        },
+      });
+    },
   },
 };

@@ -32,8 +32,8 @@
           </div>
         </div>
         <div class="profile-btn-box">
-          <p v-if="isF4F" class="profile-dm bold pointer" @click="clickMessage">
-            메시지
+          <p v-if="isF4F" class="profile-dm bold pointer" @click="clickPost">
+            쪽지
           </p>
           <p
             v-if="!isFollowed"
