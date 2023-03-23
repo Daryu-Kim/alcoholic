@@ -1,0 +1,95 @@
+@import "@/styles/_variabled.css";
+@import "@/styles/font.css";
+@import "@/styles/reset.css";
+
+.post {
+    margin-top: 4.4rem;
+    position: relative;
+    padding: 1.2rem 1.6rem;
+}
+
+.post-profile-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-profile-right {
+    display: flex;
+    align-items: center;
+    grid-gap: 0.8rem;
+}
+
+.post-profile-img {
+    width: 4.8rem;
+    height: 4.8rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.post-profile-name {
+    font-size: 1.8rem;
+    text-align: start;
+}
+
+.post-profile-to {
+    color: var(--sub-color);
+}
+
+.post-input {
+    font-size: 2.8rem;
+    margin-top: 1.6rem;
+    width: 100%;
+    height: 50vh;
+    border-radius: 0.8rem;
+    border: 2px solid var(--sub-color);
+    overflow-y: scroll;
+    padding: 0.8rem;
+    background-color: var(--background-color);
+}
+
+.post-input:focus {
+    outline: 0;
+}
+
+.post-timestamp-box {
+    display: flex;
+    align-items: center;
+    grid-gap: 0.4rem;
+    margin-top: 0.8rem;
+}
+
+.post-timestamp {
+    color: var(--sub-color);
+    font-size: 1.4rem;
+}
+
+.func-box {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 0.8rem;
+    padding: 0.8rem 1.6rem;
+}
+
+.func-delete-btn,
+.func-send-btn {
+    width: 100%;
+    color: #101010;
+    border-radius: 0.8rem;
+    padding: 0.4rem 1.6rem;
+    font-size: 2rem;
+}
+
+.func-send-btn {
+    background-color: var(--accent-color);
+}
+
+.func-delete-btn {
+    background-color: var(--pastel-red);
+}

@@ -1,5 +1,6 @@
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
+import { isDarkMode } from "../modules/Functions";
 
 export default {
   name: "InstallView",
@@ -27,7 +28,7 @@ export default {
       console.log("Not Compatable!");
       toast.error("지원하지 않는 기기입니다!", {
         autoClose: 2000,
-        theme: "colored",
+        theme: isDarkMode(),
       });
       setTimeout(() => {
         window.close();
@@ -60,7 +61,7 @@ export default {
       if (this.defferedPrompt === null) {
         toast.error("이미 설치되어 있습니다!", {
           autoClose: 2000,
-          theme: "colored",
+          theme: isDarkMode(),
         });
       } else {
         this.defferedPrompt.prompt();

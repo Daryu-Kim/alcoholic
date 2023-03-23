@@ -18,6 +18,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { toast } from "vue3-toastify";
+import { isDarkMode } from "./Functions";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -114,7 +115,7 @@ export const followUser = async (targetUID) => {
   } catch (error) {
     toast.error(error, {
       autoClose: 2000,
-      theme: "colored",
+      theme: isDarkMode(),
     });
   }
 };
@@ -158,7 +159,7 @@ export const unfollowUser = async (targetUID) => {
   } catch (error) {
     toast.error(error, {
       autoClose: 2000,
-      theme: "colored",
+      theme: isDarkMode(),
     });
   }
 };

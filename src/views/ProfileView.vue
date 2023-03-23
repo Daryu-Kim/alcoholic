@@ -22,27 +22,31 @@
         <p v-if="!USER_DES" class="profile-des">자기소개가 없습니다!</p>
         <p v-else class="profile-des">{{ USER_DES }}</p>
         <div class="profile-follow-box">
-          <div class="profile-follower-box" @click="goFollower">
+          <div class="profile-follower-box pointer" @click="goFollower">
             <p class="profile-follower-count bold">{{ USER_FOLLOWER }}</p>
             <p class="profile-follower-des">팔로워</p>
           </div>
-          <div class="profile-following-box" @click="goFollowing">
+          <div class="profile-following-box pointer" @click="goFollowing">
             <p class="profile-following-count bold">{{ USER_FOLLOWING }}</p>
             <p class="profile-following-des">팔로잉</p>
           </div>
         </div>
         <div class="profile-btn-box">
-          <p v-if="isF4F" class="profile-dm bold" @click="clickMessage">
+          <p v-if="isF4F" class="profile-dm bold pointer" @click="clickMessage">
             메시지
           </p>
           <p
             v-if="!isFollowed"
-            class="profile-follow bold"
+            class="profile-follow bold pointer"
             @click="clickFollow"
           >
             팔로우
           </p>
-          <p v-else class="profile-unfollow bold" @click="clickUnfollow">
+          <p
+            v-else
+            class="profile-unfollow bold pointer"
+            @click="clickUnfollow"
+          >
             팔로우 취소
           </p>
         </div>

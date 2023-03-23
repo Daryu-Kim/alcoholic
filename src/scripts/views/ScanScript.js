@@ -1,6 +1,7 @@
 import router from "@/router";
 import { QrcodeStream } from "vue3-qrcode-reader";
 import { toast } from "vue3-toastify";
+import { isDarkMode } from "../modules/Functions";
 import { setSessionStorage } from "../modules/Storage";
 
 export default {
@@ -14,19 +15,9 @@ export default {
       noRearCamera: false,
       noFrontCamera: false,
       torchActive: false,
-      is_dark: "",
     };
   },
-  mounted() {
-    this.isDarkMode() ? (this.is_dark = "dark") : (this.is_dark = "light");
-  },
   methods: {
-    isDarkMode() {
-      return (
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      );
-    },
     switchTorch() {
       switch (this.torchActive) {
         case true:
@@ -72,7 +63,7 @@ export default {
         setSessionStorage("PLACE_ID", temp[0]);
         setSessionStorage("TABLE_ID", temp[1]);
         toast.loading("QR 인식이 완료되었습니다!\n홈으로 이동합니다!", {
-          theme: this.is_dark,
+          theme: isDarkMode(),
         });
         setTimeout(() => {
           toast.clearAll();
@@ -81,7 +72,7 @@ export default {
       } else {
         toast.error("유효한 QR코드가 아닙니다!\n다시 인식시켜주세요!", {
           autoClose: 2000,
-          theme: "colored",
+          theme: isDarkMode(),
         });
       }
     },

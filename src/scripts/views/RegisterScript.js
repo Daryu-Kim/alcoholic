@@ -3,6 +3,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { getDownloadURL, uploadBytes, ref } from "firebase/storage";
 import { toast } from "vue3-toastify";
 import { firestore, storage } from "../modules/firebase";
+import { isDarkMode } from "../modules/Functions";
 
 export default {
   name: "RegisterView",
@@ -19,7 +20,6 @@ export default {
       temp_age: 0,
       temp_gender: "",
       temp_img: "",
-      is_dark: "",
     };
   },
   mounted() {
@@ -35,16 +35,8 @@ export default {
     for (let i = min_year; i > max_year; i--) {
       this.range_year.push(i);
     }
-
-    this.isDarkMode() ? (this.is_dark = "dark") : (this.is_dark = "light");
   },
   methods: {
-    isDarkMode() {
-      return (
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      );
-    },
     changeName(event) {
       this.temp_name = event.target.value;
     },
@@ -75,7 +67,7 @@ export default {
     toastError(msg) {
       toast.error(msg, {
         autoClose: 2000,
-        theme: "colored",
+        theme: isDarkMode(),
       });
     },
     async uploadProfileImage(image, id) {
@@ -123,7 +115,7 @@ export default {
             const user_id = localStorage.getItem("UID");
 
             toast.loading("회원 정보를 생성중입니다!", {
-              theme: this.is_dark,
+              theme: isDarkMode(),
             });
 
             var img_url = await this.uploadProfileImage(this.temp_img, user_id);

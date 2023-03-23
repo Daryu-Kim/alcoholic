@@ -21,12 +21,13 @@
 }
 
 .dm-item-img {
-    width: 5.2rem;
-    height: 5.2rem;
+    width: 4.2rem;
+    height: 4.2rem;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     border-radius: 50%;
+    aspect-ratio: 1 / 1;
 }
 
 .dm-item-title {
@@ -37,7 +38,9 @@
 .post-item-timestamp-box {
     display: flex;
     align-items: center;
+    justify-content: center;
     grid-gap: 0.4rem;
+    width: 8rem;
 }
 
 .fa-clock {
@@ -56,13 +59,18 @@
     color: var(--sub-color);
 }
 
-.dm-item-timestamp {
-    color: var(--sub-color);
-    font-size: 1.4rem;
-}
-
 .no-post {
     color: var(--sub-color);
     font-size: 2.4rem;
     margin-top: 50vh;
+}
+
+.post-item-no-read {
+    color: var(--pastel-red);
+    font-size: 1.2rem;
+}
+
+.post-item-read {
+    color: var(--sub-color);
+    font-size: 1.2rem;
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <i class="fa-solid fa-chevron-left" @click="goPrev"></i>
+    <i class="fa-solid fa-chevron-left pointer" @click="goPrev"></i>
     <p class="header-title bold">{{ title }}</p>
   </div>
 </template>

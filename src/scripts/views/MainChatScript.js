@@ -19,6 +19,7 @@ import {
   storage,
   unfollowUser,
 } from "../modules/firebase";
+import { isDarkMode } from "../modules/Functions";
 import { getSessionStorage } from "../modules/Storage";
 
 export default {
@@ -78,12 +79,6 @@ export default {
         });
       });
       console.info(snapshot);
-    },
-    isDarkMode() {
-      return (
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      );
     },
     async profileImgClick(event) {
       var temp = event.target.style.backgroundImage;
@@ -165,7 +160,7 @@ export default {
       if (!this.$refs.INPUT_MSG.value) {
         toast.error("메시지를 입력해주세요!", {
           autoClose: 2000,
-          theme: "colored",
+          theme: isDarkMode(),
         });
       } else {
         var year = new Date().getFullYear();

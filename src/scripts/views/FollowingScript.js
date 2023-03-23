@@ -17,7 +17,7 @@ export default {
   },
   async mounted() {
     const followings = await getDocs(
-      collection(firestore, "Follows", this.UID, "Following")
+      collection(firestore, "Follows", this.TARGET_ID, "Following")
     );
     followings.forEach((doc) => {
       this.FOLLOWING_ITEM.push(doc.data());

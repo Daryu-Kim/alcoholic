@@ -5,6 +5,7 @@ import { firestore } from "../modules/firebase";
 import { toast } from "vue3-toastify";
 import { setSessionStorage } from "../modules/Storage";
 import router from "@/router";
+import { isDarkMode } from "../modules/Functions";
 
 export default {
   name: "MainSearchView",
@@ -118,7 +119,7 @@ export default {
       if (!value) {
         toast.error("검색어를 입력해주세요!", {
           autoClose: 2000,
-          theme: "colored",
+          theme: isDarkMode(),
         });
       } else {
         if (value[0] == "@") {

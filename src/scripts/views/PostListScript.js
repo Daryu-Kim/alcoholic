@@ -1,5 +1,13 @@
 import DialogHeaderComponent from "@/components/DialogHeaderComponent.vue";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import router from "@/router";
+import {
+  collection,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+  updateDoc,
+} from "firebase/firestore";
 import { firestore } from "../modules/firebase";
 
 export default {
@@ -17,7 +25,7 @@ export default {
   async mounted() {
     const filter = query(
       collection(firestore, "Users", this.UID, "Posts"),
-      orderBy("created_at")
+      orderBy("created_at", "desc")
     );
     const postSnapshot = await getDocs(filter);
     postSnapshot.forEach((post) => {
@@ -27,13 +35,21 @@ export default {
       const resultDates = (tempTime / 1000 / 60 / 60 / 24).toFixed(0);
       const resultHours = (tempTime / 1000 / 60 / 60).toFixed(0);
       const resultMinutes = ((tempTime / 1000 / 60) % 60).toFixed(0);
-      console.log(resultDates, resultHours, resultMinutes);
       this.POST.push(post.data());
       this.DATE.push([resultDates, resultHours, resultMinutes]);
     });
-    console.log(this.POST);
   },
   methods: {
-    goDMChat() {},
+    async showPost(cid) {
+      await updateDoc(doc(firestore, `Users/${this.UID}/Posts`, cid), {
+        read: true,
+      });
+      router.push({
+        path: "/post-view",
+        query: {
+          CID: cid,
+        },
+      });
+    },
   },
 };

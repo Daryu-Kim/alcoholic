@@ -13,11 +13,13 @@
     <div class="home-recommend-box">
       <div class="home-recommend-title-box">
         <p class="home-recommend-title bold">이런 술집은 어떠세요?</p>
-        <p class="home-recommend-des" @click="goRecommendPlace">더보기</p>
+        <p class="home-recommend-des pointer" @click="goRecommendPlace">
+          더보기
+        </p>
       </div>
       <swiper :navigation="true" :modules="modules" class="home-recommend-list">
         <swiper-slide
-          class="home-recommend-item"
+          class="home-recommend-item pointer"
           v-for="(item, index) in RECOMMEND_ITEM"
           :key="index"
           :style="{
@@ -43,11 +45,13 @@
     <div class="home-recommend-box">
       <div class="home-recommend-title-box">
         <p class="home-recommend-title bold">한번 친해져보세요!</p>
-        <p class="home-recommend-des" @click="goRecommendUser">더보기</p>
+        <p class="home-recommend-des pointer" @click="goRecommendUser">
+          더보기
+        </p>
       </div>
       <swiper :navigation="true" :modules="modules" class="home-recommend-list">
         <swiper-slide
-          class="home-recommend-item"
+          class="home-recommend-item pointer"
           v-for="(item, index) in RECOMMEND_USER"
           :key="index"
           :style="{
