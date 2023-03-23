@@ -19,7 +19,7 @@
       <textarea class="post-input" ref="POST_INPUT"></textarea>
     </div>
     <div class="func-box">
-      <p class="func-send-btn bold" @click="sendPost">쪽지 보내기</p>
+      <p class="func-send-btn bold pointer" @click="sendPost">쪽지 보내기</p>
     </div>
   </div>
 </template>

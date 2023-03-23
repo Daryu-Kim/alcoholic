@@ -34,8 +34,8 @@
       </div>
     </div>
     <div class="func-box">
-      <p class="func-send-btn bold" @click="sendPost(POST.uid)">답장</p>
-      <p class="func-delete-btn bold" @click="deletePost">삭제</p>
+      <p class="func-send-btn bold pointer" @click="sendPost(POST.uid)">답장</p>
+      <p class="func-delete-btn bold pointer" @click="deletePost">삭제</p>
     </div>
   </div>
 </template>

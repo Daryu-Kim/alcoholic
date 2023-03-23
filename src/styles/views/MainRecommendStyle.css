@@ -11,6 +11,11 @@
     align-items: center;
     justify-content: center;
     padding: 0.8rem 1.6rem;
+    height: 6rem;
+}
+
+.recommend-router {
+    height: calc(100vh - 6rem - 4.4rem - 4.8rem);
 }
 
 .recommend-menu-item {
@@ -120,4 +125,21 @@
 .recommend-tag {
     font-size: 1.4rem;
     color: var(--accent-color);
+}
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: var(--overlay-color);
+    z-index: 10;
+    display: flex;
+    align-items: flex-end;
+}
+
+.overlay-box {
+    width: 100%;
+    background-color: var(--background-color);
+    border-radius: 0.8rem 0.8rem 0 0;
 }

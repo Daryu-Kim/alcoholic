@@ -77,19 +77,11 @@
     padding: 0.8rem 1.6rem;
 }
 
-.func-delete-btn,
 .func-send-btn {
     width: 100%;
     color: #101010;
     border-radius: 0.8rem;
-    padding: 0.4rem 1.6rem;
+    padding: 0.8rem 1.6rem;
     font-size: 2rem;
-}
-
-.func-send-btn {
     background-color: var(--accent-color);
-}
-
-.func-delete-btn {
-    background-color: var(--pastel-red);
 }

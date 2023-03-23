@@ -30,6 +30,11 @@
         </div>
       </div>
     </div>
+    <div class="overlay" ref="OVERLAY">
+      <div class="overlay-box">
+        <p>asdf</p>
+      </div>
+    </div>
   </div>
 </template>
 

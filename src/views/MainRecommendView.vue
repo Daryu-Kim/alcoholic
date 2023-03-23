@@ -22,7 +22,7 @@
         친구 추천
       </label>
     </div>
-    <router-view />
+    <router-view class="recommend-router" />
   </div>
 </template>
 
