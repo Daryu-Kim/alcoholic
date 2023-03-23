@@ -17,6 +17,8 @@ import PlaceView from "../views/PlaceView.vue";
 import PostListView from "../views/PostListView.vue";
 import PostView from "../views/PostView.vue";
 import PostSendView from "../views/PostSendView.vue";
+import MainRecommendPlaceView from "../views/MainRecommendPlaceView.vue";
+import MainRecommendUserView from "../views/MainRecommendUserView.vue";
 
 const routes = [
   {
@@ -63,13 +65,13 @@ const routes = [
         children: [
           {
             path: "place",
-            name: "place",
-            component: "",
+            name: "replace",
+            component: MainRecommendPlaceView,
           },
           {
             path: "user",
-            name: "user",
-            component: "",
+            name: "reuser",
+            component: MainRecommendUserView,
           },
         ],
       },

@@ -1,7 +1,5 @@
 <template>
-  <transition>
-    <router-view />
-  </transition>
+  <router-view />
 </template>
 
 <style lang="scss">

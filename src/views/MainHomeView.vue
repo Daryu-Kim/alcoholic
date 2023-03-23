@@ -67,7 +67,7 @@
               </p>
             </div>
             <p v-if="item.des" class="home-recommend-des">{{ item.des }}</p>
-            <p v-else class="home-recommend-des mt-04">자기소개가 없습니다!</p>
+            <p v-else class="home-recommend-des">자기소개가 없습니다!</p>
           </div>
         </swiper-slide>
       </swiper>
