@@ -1,6 +1,7 @@
 @import "@/styles/_variabled.css";
 @import "@/styles/font.css";
 @import "@/styles/reset.css";
+@import "/node_modules/multi-range-slider-vue/MultiRangeSliderBarOnly.css";
 
 .wrapper {
     position: relative;
@@ -66,6 +67,17 @@
     align-items: center;
     justify-content: center;
     grid-gap: 1.6rem;
+    position: relative;
+}
+
+.recommend-no-doc {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: var(--sub-color);
 }
 
 .recommend-item {
@@ -134,7 +146,7 @@
     top: 0;
     background-color: var(--overlay-color);
     z-index: 10;
-    display: flex;
+    display: none;
     align-items: flex-end;
 }
 
@@ -142,4 +154,100 @@
     width: 100%;
     background-color: var(--background-color);
     border-radius: 0.8rem 0.8rem 0 0;
+    padding: 1.6rem 2.4rem;
+}
+
+.overlay-x {
+    position: absolute;
+    right: 2.4rem;
+    color: var(--pastel-red);
+    font-size: 2rem;
+}
+
+.overlay-title {
+    font-size: 2.4rem;
+}
+
+.overlay-subtitle-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.overlay-subtitle {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    text-align: start;
+    color: var(--sub-dark-color);
+}
+
+.overlay-subinfo {
+    margin-top: 2rem;
+    font-size: 1.6rem;
+    text-align: start;
+}
+
+.overlay-list {
+    display: flex;
+    align-items: center;
+    grid-gap: 0.8rem;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    height: 2.8rem;
+    margin-top: 0.8rem;
+}
+
+.multi-range-slider {
+    border: none;
+}
+
+.overlay-item {
+    flex: 0 0 auto;
+}
+
+.overlay-radio {
+    display: none;
+}
+
+.overlay-label {
+    background-color: var(--dialog-background-color);
+    padding: 0.4rem 1.2rem;
+    border-radius: 100rem;
+    font-size: 1.4rem;
+}
+
+.overlay-radio:checked + label {
+    color: #101010;
+    background-color: var(--accent-color);
+}
+
+.multi-range-slider {
+    width: 100%;
+}
+
+.multi-range-slider .thumb::before {
+    background: red;
+}
+
+.overlay-btn-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 1.6rem;
+    margin-top: 3.6rem;
+}
+
+.overlay-btn {
+    width: 100%;
+    color: #101010;
+    border-radius: 0.8rem;
+    padding: 0.8rem 1.6rem;
+}
+
+.reset {
+    background-color: var(--pastel-red);
+}
+
+.search {
+    background-color: var(--accent-color);
 }

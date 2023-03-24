@@ -1,3 +1,5 @@
+import { toast } from "vue3-toastify";
+
 export const isDarkMode = () => {
   const isDark =
     window.matchMedia &&
@@ -7,4 +9,11 @@ export const isDarkMode = () => {
   } else {
     return "light";
   }
+};
+
+export const toastError = (msg) => {
+  toast.error(msg, {
+    autoClose: 2000,
+    theme: isDarkMode(),
+  });
 };

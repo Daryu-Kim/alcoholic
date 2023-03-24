@@ -8,7 +8,11 @@
         class="recommend-radio display-none"
         ref="RECOMMEND_PLACE"
       />
-      <label for="place" class="recommend-menu-item bold" @click="clickPlace">
+      <label
+        for="place"
+        class="recommend-menu-item bold pointer"
+        @click="clickPlace"
+      >
         술집 추천
       </label>
       <input
@@ -18,7 +22,11 @@
         class="recommend-radio display-none"
         ref="RECOMMEND_USER"
       />
-      <label for="user" class="recommend-menu-item bold" @click="clickUser">
+      <label
+        for="user"
+        class="recommend-menu-item bold pointer"
+        @click="clickUser"
+      >
         친구 추천
       </label>
     </div>
